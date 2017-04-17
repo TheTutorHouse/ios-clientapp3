@@ -11,6 +11,7 @@ import UIKit
 class SurveyController: UIViewController {
     
     var companyLogoImage: UIImageView!
+    @IBOutlet weak var contentView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,13 +20,34 @@ class SurveyController: UIViewController {
             print("Method viewDidLoad was run from StartController.")
         }
         
-        view.backgroundColor = FillColor.red
-        view.addSubview(companyLogoImage)
+        contentView.backgroundColor = FillColor.red
+        contentView.addSubview(companyLogoImage)
         
     }
     
-    func gays(){
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        //popInContactDetailsCard()
+    }
+    
+    
+    //First Survey Question - Contact Details
+    //Settings:
+    var contactDetailsCard: UIImageView!
+    var contactDetailsCardTitle: UILabel!
+    var contactDetailsCardTitleUnderline: CAShapeLayer!
+    var contactDetailsCardNameLabel: UILabel!
+    var contactDetailsCardNameField: UITextField!
+    var contactDetailsCardEmailLabel: UILabel!
+    var contactDetailsCardEmailField: UITextField!
+    var contactDetailsCardGradeLabel: UILabel!
+    var contactDetailsCardGradeButtons: [UIButton]!
+    var contactDetailsCardLowerDivider: CAShapeLayer!
+    var contactDetailsCardNextButton: UIButton!
+    
+    //Method:
+    func popInContactDetailsCard(){
     }
 
 }
