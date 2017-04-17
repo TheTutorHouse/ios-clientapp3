@@ -15,6 +15,8 @@
 		31C33B661EA3056400C3E5F4 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B651EA3056400C3E5F4 /* StartController.swift */; };
 		31C33B681EA307A800C3E5F4 /* UIToolkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B671EA307A800C3E5F4 /* UIToolkit.swift */; };
 		31C33B6A1EA3081900C3E5F4 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B691EA3081900C3E5F4 /* Options.swift */; };
+		31C33B711EA45E9B00C3E5F4 /* CustomObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B701EA45E9B00C3E5F4 /* CustomObjects.swift */; };
+		31C33B731EA4863D00C3E5F4 /* SurveyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B721EA4863D00C3E5F4 /* SurveyController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		31C33B651EA3056400C3E5F4 /* StartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
 		31C33B671EA307A800C3E5F4 /* UIToolkit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIToolkit.swift; sourceTree = "<group>"; };
 		31C33B691EA3081900C3E5F4 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
+		31C33B701EA45E9B00C3E5F4 /* CustomObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomObjects.swift; sourceTree = "<group>"; };
+		31C33B721EA4863D00C3E5F4 /* SurveyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +67,9 @@
 				31C33B531EA3044700C3E5F4 /* AppDelegate.swift */,
 				31C33B551EA3044700C3E5F4 /* ViewController.swift */,
 				31C33B651EA3056400C3E5F4 /* StartController.swift */,
+				31C33B721EA4863D00C3E5F4 /* SurveyController.swift */,
 				31C33B671EA307A800C3E5F4 /* UIToolkit.swift */,
+				31C33B701EA45E9B00C3E5F4 /* CustomObjects.swift */,
 				31C33B691EA3081900C3E5F4 /* Options.swift */,
 				31C33B571EA3044700C3E5F4 /* Main.storyboard */,
 				31C33B5A1EA3044700C3E5F4 /* Assets.xcassets */,
@@ -151,6 +157,8 @@
 				31C33B6A1EA3081900C3E5F4 /* Options.swift in Sources */,
 				31C33B681EA307A800C3E5F4 /* UIToolkit.swift in Sources */,
 				31C33B661EA3056400C3E5F4 /* StartController.swift in Sources */,
+				31C33B711EA45E9B00C3E5F4 /* CustomObjects.swift in Sources */,
+				31C33B731EA4863D00C3E5F4 /* SurveyController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
