@@ -17,7 +17,7 @@ class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
     var emailTextField: CustomTextField
     var emailTextLabel: CustomLabel
     var gradeTextLabel: CustomLabel
-    var gradeButtons: [ImageButton]
+    var gradeButtons: [CustomButton]
     
     required init?(coder aDecoder: NSCoder) {
         parentView = aDecoder.decodeObject(forKey: "SurveyCard1-parentView") as! UIView
@@ -28,7 +28,7 @@ class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
         nameTextLabel = aDecoder.decodeObject(forKey: "SurveyCard1-nameTextLabel") as! CustomLabel
         emailTextLabel = aDecoder.decodeObject(forKey: "SurveyCard1-emailTextLabel") as! CustomLabel
         gradeTextLabel = aDecoder.decodeObject(forKey: "SurveyCard1-gradeTextLabel") as! CustomLabel
-        gradeButtons = aDecoder.decodeObject(forKey: "SurveyCard1-gradeButtons") as! [ImageButton]
+        gradeButtons = aDecoder.decodeObject(forKey: "SurveyCard1-gradeButtons") as! [CustomButton]
         super.init(coder: aDecoder)
     }
     
@@ -54,7 +54,7 @@ class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
         nameTextLabel = CustomLabel(frame: CGRect.zero)
         emailTextLabel = CustomLabel(frame: CGRect.zero)
         gradeTextLabel = CustomLabel(frame: CGRect.zero)
-        gradeButtons = [ImageButton]()
+        gradeButtons = [CustomButton]()
         super.init(frame: frame)
     }
     
@@ -67,7 +67,7 @@ class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
         nameTextLabel = CustomLabel(frame: CGRect.zero)
         emailTextLabel = CustomLabel(frame: CGRect.zero)
         gradeTextLabel = CustomLabel(frame: CGRect.zero)
-        gradeButtons = [ImageButton]()
+        gradeButtons = [CustomButton]()
         super.init(image: #imageLiteral(resourceName: "SurveyCard1-Medium"))
         
         setupCard()
@@ -137,7 +137,7 @@ class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
         
         for buttonID in 0...3{
             //Initialize each button and move them below the grade label.
-            gradeButtons.append(ImageButton(activeImage: buttonInactiveImages[buttonID], highlightedImage: buttonHighlightedImages[buttonID], parent: self, target: self, action: #selector(onGradeButtonClick)))
+            gradeButtons.append(CustomButton(activeImage: buttonInactiveImages[buttonID], highlightedImage: buttonHighlightedImages[buttonID], parent: self, target: self, action: #selector(onGradeButtonClick)))
             gradeButtons[buttonID].resizeProportionallyBy(.width, parent: self, byFactor: 0.1225, mode: .positional)
             gradeButtons[buttonID].centerInParent(self)
             gradeButtons[buttonID].absoluteRepositionFromObject(gradeTextLabel, parent: self, xOffset: nil, yOffset: 7)
@@ -152,7 +152,7 @@ class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
         }
     }
     
-    func onGradeButtonClick(sender: ImageButton!){
+    func onGradeButtonClick(sender: CustomButton!){
         /*
         var selectedGrade: Int
         
@@ -166,7 +166,7 @@ class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
         case 3:
             selectedGrade = 12
         default:
-            fatalError("Received ImageButton with an invalid sender.")
+            fatalError("Received CustomButton with an invalid sender.")
         }
         */
         
@@ -189,11 +189,11 @@ class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
     
     func initializeBottomDivider(){
         bottomDividerLeft = HorizontalLine.init(parent: self, verticalOffsetFactorFromCenter: 0, lengthFactor: 0.8, color: CustomColor.grey1, partialSection: .left)
-        bottomDividerLeft.offsetVerticallyFromObject(nextButton, parent: self, offsetFactor: -0.04)
+        bottomDividerLeft.offsetFrom(nextButton, by: -0.04, mode: .relative, parent: self)
         self.layer.addSublayer(bottomDividerLeft)
         
         bottomDividerRight = HorizontalLine(parent: self, verticalOffsetFactorFromCenter: 0, lengthFactor: 0.8, color: CustomColor.grey1, partialSection: .right)
-        bottomDividerRight.offsetVerticallyFromObject(nextButton, parent: self, offsetFactor: -0.04)
+        bottomDividerRight.offsetFrom(nextButton, by: -0.04, mode: .relative, parent: self)
         self.layer.addSublayer(bottomDividerRight)
     }
     

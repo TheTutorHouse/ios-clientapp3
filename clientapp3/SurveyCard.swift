@@ -9,10 +9,10 @@
 import UIKit
 
 class SurveyCard: Card{
-    var nextButton: ImageButton
+    var nextButton: CustomButton
     
     required init?(coder aDecoder: NSCoder) {
-        nextButton = aDecoder.decodeObject(forKey: "SurveyCard-nextButton") as! ImageButton
+        nextButton = aDecoder.decodeObject(forKey: "SurveyCard-nextButton") as! CustomButton
         super.init(coder: aDecoder)
     }
     
@@ -22,17 +22,17 @@ class SurveyCard: Card{
     }
     
     override init(frame: CGRect) {
-        nextButton = ImageButton(frame: CGRect.zero)
+        nextButton = CustomButton(frame: CGRect.zero)
         super.init(frame: frame)
     }
     
     override init(image: UIImage?){
-        nextButton = ImageButton(frame: CGRect.zero)
+        nextButton = CustomButton(frame: CGRect.zero)
         super.init(image: image)
     }
     
     func initializeNextButton(buttonTarget: Any, buttonSelector: Selector){
-        nextButton = ImageButton.init(activeImage: #imageLiteral(resourceName: "NextButton-Medium"), highlightedImage: #imageLiteral(resourceName: "NextButtonHighlighted-Medium"), parent: self, target: buttonTarget, action: buttonSelector, inactiveImage: #imageLiteral(resourceName: "NextButtonInactive-Medium"))
+        nextButton = CustomButton.init(activeImage: #imageLiteral(resourceName: "NextButton-Medium"), highlightedImage: #imageLiteral(resourceName: "NextButtonHighlighted-Medium"), parent: self, target: buttonTarget, action: buttonSelector, inactiveImage: #imageLiteral(resourceName: "NextButtonInactive-Medium"))
         nextButton.centerInParent(self)
         nextButton.center.y = self.frame.height - (nextButton.frame.height/2) - 57.5
         self.addSubview(nextButton)

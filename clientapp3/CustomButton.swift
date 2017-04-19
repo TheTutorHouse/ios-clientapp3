@@ -1,5 +1,5 @@
 //
-//  ImageButton.swift
+//  CustomButton.swift
 //  clientapp3
 //
 //  Created by Steven Xie on 17-04-2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageButton: UIButton{
+class CustomButton: UIButton{
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)

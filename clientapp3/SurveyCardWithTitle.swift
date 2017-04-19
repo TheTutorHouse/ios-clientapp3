@@ -45,7 +45,7 @@ class SurveyCardWithTitle: SurveyCard{
     
     func initializeTitleUnderline(){
         titleUnderline = HorizontalLine(parent: self, lengthFactor: 0.8)
-        titleUnderline.absoluteOffsetVerticallyFromObject(titleLabel, parent: self, offset: 5)
+        titleUnderline.offsetFrom(titleLabel, by: 5, mode: .absolute, parent: self)
         self.layer.addSublayer(titleUnderline)
     }
 }

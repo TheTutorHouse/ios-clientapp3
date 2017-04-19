@@ -30,7 +30,7 @@ class CustomTextField: UITextField{
         let textFieldWidth = parent.frame.width * widthFactor
         let centerX = (parent.frame.width/2)
         let centerY = (parent.frame.height/2)
-        let textFieldFrame = CGRect.init(x: centerX - textFieldWidth/2, y: centerY - (CustomHeight.textField/2), width: textFieldWidth, height: CustomHeight.textField)
+        let textFieldFrame = CGRect.init(x: centerX - textFieldWidth/2, y: centerY - (37.5/2), width: textFieldWidth, height: 37.5)
         super.init(frame: textFieldFrame)
         
         self.delegate = delegate

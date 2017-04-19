@@ -1,24 +1,13 @@
 //
-//  VariablePanel.swift
+//  CustomFont.swift
 //  clientapp3
 //
-//  Created by Steven Xie on 15-04-2017.
+//  Created by Steven Xie on 18-04-2017.
 //  Copyright © 2017 The Tutor House. All rights reserved.
 //
 
 import Foundation
 import UIKit
-
-//Developer Options
-public let verbosityLevel = 3 //Minimum is 0, maximum is 5.
-
-//Colors & Styles
-public struct CustomColor{
-    static let red = RGBColor(r: 211, g: 60, b: 60)
-    static let grey1 = RGBColor(r: 147, g: 147, b: 147)
-    static let textFieldGrey = RGBColor(r: 228, g: 228, b: 228)
-    static let textFieldGrey2 = RGBColor(r: 151, g: 151, b: 151)
-}
 
 public struct FontSize{
     static let body1: CGFloat = 20.0
@@ -35,11 +24,6 @@ public struct FontColor{
     static let bodyGrey1 = RGBColor(r: 106, g: 106, b: 106)
 }
 
-public struct CustomHeight{
-    static let textField: CGFloat = 37.5
+public struct CustomFont{
+    
 }
-
-
-
-
-

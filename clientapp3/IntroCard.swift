@@ -14,7 +14,7 @@ class IntroCard: Card{
     var titleUnderline: HorizontalLine
     var headerLabel: CustomLabel
     var bodyLabel: CustomLabel
-    var button: ImageButton
+    var button: CustomButton
     
     required init?(coder aDecoder: NSCoder) {
         parentView = aDecoder.decodeObject(forKey: "IntroCard-parentView") as! UIView
@@ -22,7 +22,7 @@ class IntroCard: Card{
         titleUnderline = aDecoder.decodeObject(forKey: "IntroCard-titleUnderline") as! HorizontalLine
         headerLabel = aDecoder.decodeObject(forKey: "IntroCard-headerLabel") as! CustomLabel
         bodyLabel = aDecoder.decodeObject(forKey: "IntroCard-bodyLabel") as! CustomLabel
-        button = aDecoder.decodeObject(forKey: "IntroCard-button") as! ImageButton
+        button = aDecoder.decodeObject(forKey: "IntroCard-button") as! CustomButton
         super.init(coder: aDecoder)
     }
     
@@ -41,7 +41,7 @@ class IntroCard: Card{
         self.titleUnderline = HorizontalLine()
         self.headerLabel = CustomLabel(frame: CGRect.zero)
         self.bodyLabel = CustomLabel(frame: CGRect.zero)
-        self.button = ImageButton(frame: CGRect.zero)
+        self.button = CustomButton(frame: CGRect.zero)
         super.init(frame: frame)
     }
     
@@ -52,7 +52,7 @@ class IntroCard: Card{
         self.titleUnderline = HorizontalLine()
         self.headerLabel = CustomLabel(frame: CGRect.zero)
         self.bodyLabel = CustomLabel(frame: CGRect.zero)
-        self.button = ImageButton(frame: CGRect.zero)
+        self.button = CustomButton(frame: CGRect.zero)
         
         super.init(image: #imageLiteral(resourceName: "IntroCard-Medium"))
         setupCard()
@@ -76,7 +76,7 @@ class IntroCard: Card{
         self.addSubview(titleLabel)
         
         titleUnderline = HorizontalLine(parent: self, lengthFactor: 0.8)
-        titleUnderline.absoluteOffsetVerticallyFromObject(titleLabel, parent: self, offset: 5)
+        titleUnderline.offsetFrom(titleLabel, by: 5, mode: .absolute, parent: self)
         self.layer.addSublayer(titleUnderline)
     }
     
@@ -97,7 +97,7 @@ class IntroCard: Card{
     }
     
     func initializeButton(buttonTarget: Any, buttonSelector: Selector){
-        button = ImageButton(activeImage: #imageLiteral(resourceName: "BeginButton-Regular"), highlightedImage: #imageLiteral(resourceName: "BeginButtonHighlighted-Regular"), parent: self, target: buttonTarget, action: buttonSelector)
+        button = CustomButton(activeImage: #imageLiteral(resourceName: "BeginButton-Regular"), highlightedImage: #imageLiteral(resourceName: "BeginButtonHighlighted-Regular"), parent: self, target: buttonTarget, action: buttonSelector)
         button.centerInParent(self)
         button.relativeShiftFromEdge(x: nil, y: self.frame.height, byFactor: -0.14, parent: self)
         self.addSubview(button)

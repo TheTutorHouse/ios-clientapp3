@@ -13,19 +13,19 @@
 		31C33B5B1EA3044700C3E5F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31C33B5A1EA3044700C3E5F4 /* Assets.xcassets */; };
 		31C33B5E1EA3044700C3E5F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C33B5C1EA3044700C3E5F4 /* LaunchScreen.storyboard */; };
 		31C33B661EA3056400C3E5F4 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B651EA3056400C3E5F4 /* StartController.swift */; };
-		31C33B681EA307A800C3E5F4 /* UIToolkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B671EA307A800C3E5F4 /* UIToolkit.swift */; };
-		31C33B6A1EA3081900C3E5F4 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B691EA3081900C3E5F4 /* Options.swift */; };
 		31C33B731EA4863D00C3E5F4 /* SurveyController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B721EA4863D00C3E5F4 /* SurveyController1.swift */; };
 		31C33B751EA4F71A00C3E5F4 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B741EA4F71A00C3E5F4 /* Card.swift */; };
 		31C33B7C1EA4FD7E00C3E5F4 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B7B1EA4FD7E00C3E5F4 /* CustomLabel.swift */; };
 		31D748771EA5122B00924748 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D748761EA5122B00924748 /* UIExtensions.swift */; };
 		31D748791EA52CA700924748 /* IntroCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D748781EA52CA700924748 /* IntroCard.swift */; };
-		31D7487B1EA53BA400924748 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7487A1EA53BA400924748 /* ImageButton.swift */; };
+		31D7487B1EA53BA400924748 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7487A1EA53BA400924748 /* CustomButton.swift */; };
 		31D7487D1EA5471F00924748 /* HorizontalLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7487C1EA5471F00924748 /* HorizontalLine.swift */; };
 		31D7487F1EA58DCE00924748 /* SurveyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7487E1EA58DCE00924748 /* SurveyCard.swift */; };
 		31D748811EA59F9400924748 /* SurveyCardWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D748801EA59F9400924748 /* SurveyCardWithTitle.swift */; };
 		31D748841EA5A07E00924748 /* SurveyCard1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D748831EA5A07E00924748 /* SurveyCard1.swift */; };
 		31D748861EA68B8000924748 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D748851EA68B8000924748 /* CustomTextField.swift */; };
+		31D748891EA6F9DF00924748 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D748881EA6F9DF00924748 /* CustomColor.swift */; };
+		31D7488B1EA6FE5000924748 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7488A1EA6FE5000924748 /* CustomFont.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,19 +37,19 @@
 		31C33B5D1EA3044700C3E5F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31C33B5F1EA3044700C3E5F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31C33B651EA3056400C3E5F4 /* StartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
-		31C33B671EA307A800C3E5F4 /* UIToolkit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIToolkit.swift; sourceTree = "<group>"; };
-		31C33B691EA3081900C3E5F4 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		31C33B721EA4863D00C3E5F4 /* SurveyController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyController1.swift; sourceTree = "<group>"; };
 		31C33B741EA4F71A00C3E5F4 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		31C33B7B1EA4FD7E00C3E5F4 /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		31D748761EA5122B00924748 /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		31D748781EA52CA700924748 /* IntroCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = IntroCard.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		31D7487A1EA53BA400924748 /* ImageButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ImageButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		31D7487A1EA53BA400924748 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CustomButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		31D7487C1EA5471F00924748 /* HorizontalLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalLine.swift; sourceTree = "<group>"; };
 		31D7487E1EA58DCE00924748 /* SurveyCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SurveyCard.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		31D748801EA59F9400924748 /* SurveyCardWithTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCardWithTitle.swift; sourceTree = "<group>"; };
 		31D748831EA5A07E00924748 /* SurveyCard1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SurveyCard1.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		31D748851EA68B8000924748 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		31D748881EA6F9DF00924748 /* CustomColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
+		31D7488A1EA6FE5000924748 /* CustomFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +88,6 @@
 				31C33B721EA4863D00C3E5F4 /* SurveyController1.swift */,
 				31C33B761EA4F71E00C3E5F4 /* UIElements */,
 				31D748761EA5122B00924748 /* UIExtensions.swift */,
-				31C33B671EA307A800C3E5F4 /* UIToolkit.swift */,
-				31C33B691EA3081900C3E5F4 /* Options.swift */,
 				31C33B571EA3044700C3E5F4 /* Main.storyboard */,
 				31C33B5A1EA3044700C3E5F4 /* Assets.xcassets */,
 				31C33B5C1EA3044700C3E5F4 /* LaunchScreen.storyboard */,
@@ -124,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				31C33B7B1EA4FD7E00C3E5F4 /* CustomLabel.swift */,
-				31D7487A1EA53BA400924748 /* ImageButton.swift */,
+				31D7487A1EA53BA400924748 /* CustomButton.swift */,
 				31D7487C1EA5471F00924748 /* HorizontalLine.swift */,
 				31D748851EA68B8000924748 /* CustomTextField.swift */,
 			);
@@ -142,6 +140,8 @@
 		31D748871EA6EAB700924748 /* Colors and Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				31D748881EA6F9DF00924748 /* CustomColor.swift */,
+				31D7488A1EA6FE5000924748 /* CustomFont.swift */,
 			);
 			name = "Colors and Fonts";
 			sourceTree = "<group>";
@@ -221,18 +221,18 @@
 			files = (
 				31D748841EA5A07E00924748 /* SurveyCard1.swift in Sources */,
 				31D7487F1EA58DCE00924748 /* SurveyCard.swift in Sources */,
+				31D748891EA6F9DF00924748 /* CustomColor.swift in Sources */,
 				31C33B561EA3044700C3E5F4 /* ViewController.swift in Sources */,
 				31D748771EA5122B00924748 /* UIExtensions.swift in Sources */,
 				31D748861EA68B8000924748 /* CustomTextField.swift in Sources */,
 				31C33B541EA3044700C3E5F4 /* AppDelegate.swift in Sources */,
 				31D748811EA59F9400924748 /* SurveyCardWithTitle.swift in Sources */,
-				31C33B6A1EA3081900C3E5F4 /* Options.swift in Sources */,
+				31D7488B1EA6FE5000924748 /* CustomFont.swift in Sources */,
 				31D7487D1EA5471F00924748 /* HorizontalLine.swift in Sources */,
-				31C33B681EA307A800C3E5F4 /* UIToolkit.swift in Sources */,
 				31D748791EA52CA700924748 /* IntroCard.swift in Sources */,
 				31C33B661EA3056400C3E5F4 /* StartController.swift in Sources */,
 				31C33B7C1EA4FD7E00C3E5F4 /* CustomLabel.swift in Sources */,
-				31D7487B1EA53BA400924748 /* ImageButton.swift in Sources */,
+				31D7487B1EA53BA400924748 /* CustomButton.swift in Sources */,
 				31C33B731EA4863D00C3E5F4 /* SurveyController1.swift in Sources */,
 				31C33B751EA4F71A00C3E5F4 /* Card.swift in Sources */,
 			);

@@ -51,12 +51,12 @@ class HorizontalLine: CAShapeLayer{
         self.lineJoin = kCALineJoinBevel
     }
     
-    func hide(){
-        self.opacity = 0
+    enum Axis{
+        case vertical
     }
     
-    func show(){
-        self.opacity = 1
+    enum TransformMode{
+        case relative, absolute
     }
     
     func animate(duration: CFTimeInterval, delay: CFTimeInterval, completionAction: ()?){
@@ -73,22 +73,47 @@ class HorizontalLine: CAShapeLayer{
         self.add(pathAnimation, forKey: nil)
         CATransaction.commit()
     }
- 
-    func offsetVerticallyFromObject(_ object: UIView, parent: UIView, offsetFactor: CGFloat){
-        let offset = offsetFactor * parent.frame.height
-        absoluteOffsetVerticallyFromObject(object, parent: parent, offset: offset)
+    
+    func offsetFrom(_ object: UIView, direction axis: Axis = .vertical, by offset: CGFloat, mode: TransformMode, parent: UIView){
+        var maxParentBound: CGFloat
+        var maxObjectBound: CGFloat
+        var maxSelfBound: CGFloat
+        var targetPosition: CGFloat
+        
+        switch  axis {
+        case .vertical:
+            maxParentBound = parent.frame.height
+            maxSelfBound = self.frame.height
+            maxObjectBound = object.frame.height
+            targetPosition = object.center.y
+        }
+        
+        var shiftAmount: CGFloat
+        switch mode{
+        case .relative:
+            shiftAmount = offset * maxParentBound
+        case .absolute:
+            shiftAmount = offset
+        }
+        
+        let totalSpacing = maxSelfBound/2 + abs(shiftAmount) + maxObjectBound/2
+        switch axis{
+        case .vertical:
+            if shiftAmount > 0{
+                self.position = CGPoint(x: self.position.x, y: (targetPosition - maxParentBound/2) + totalSpacing)
+            }
+            else if shiftAmount < 0 {
+                self.position = CGPoint(x: self.position.x, y: (targetPosition - maxParentBound/2) - totalSpacing)
+            }
+        }
     }
     
-    func absoluteOffsetVerticallyFromObject(_ object: UIView, parent: UIView, offset: CGFloat){
-        let verticalSpacing = (object.frame.height)/2 + (self.frame.height/2) + abs(offset)
-        if offset > 0{
-            let verticalDistFromCenterToObj: CGFloat = (parent.frame.height/2) - object.center.y
-            self.position = CGPoint(x: self.position.x, y: -verticalDistFromCenterToObj + verticalSpacing)
-        }
-        else if offset < 0{
-            let verticalDistFromCenterToObj: CGFloat = (parent.frame.height/2) - object.center.y
-            self.position = CGPoint(x: self.position.x, y: -verticalDistFromCenterToObj - verticalSpacing)
-        }
+    func hide(){
+        self.opacity = 0
+    }
+    
+    func show(){
+        self.opacity = 1
     }
     
     override init() {
