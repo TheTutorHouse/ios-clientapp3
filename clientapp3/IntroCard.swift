@@ -45,8 +45,9 @@ class IntroCard: Card{
         super.init(frame: frame)
     }
     
-    init(in parentView: UIView) {
+    init(in parentView: UIView, buttonTarget: UIViewController, buttonSelector: Selector) {
         self.parentView = parentView
+        
         self.titleLabel = CustomLabel(frame: CGRect.zero)
         self.titleUnderline = HorizontalLine()
         self.headerLabel = CustomLabel(frame: CGRect.zero)
@@ -56,20 +57,22 @@ class IntroCard: Card{
         super.init(image: #imageLiteral(resourceName: "IntroCard-Medium"))
         setupCard()
         initializeTitle()
-        initializeHeader()
-        
+        initializeHeader(shiftFactor: -0.39)
+        initializeBody(shiftFactor: -0.39)
+        initializeButton(buttonTarget: buttonTarget, buttonSelector: buttonSelector)
+        button.hide()
     }
     
-    func setupCard(){
-        self.isUserInteractionEnabled = true
+    override func setupCard(){
         self.center = parentView.center
         self.resizeProportionallyBy(.width, parent: parentView, byFactor: 0.83)
+        super.setupCard()
     }
     
     func initializeTitle(){
         titleLabel = CustomLabel(text: "Welcome!", style: .header1)
         titleLabel.centerInParent(self)
-        titleLabel.translateByParentProportion(xFactor: 0, yFactor: -0.365, parent: self)
+        titleLabel.translateByParentProportion(xFactor: 0, yFactor: -0.35, parent: self)
         self.addSubview(titleLabel)
         
         titleUnderline = HorizontalLine(parent: self, lengthFactor: 0.8)
@@ -77,34 +80,30 @@ class IntroCard: Card{
         self.layer.addSublayer(titleUnderline)
     }
     
-    func initializeHeader(){
+    func initializeHeader(shiftFactor: CGFloat){
         headerLabel = CustomLabel(text: "Need a tutor?", style: .header2)
         headerLabel.centerInParent(self)
         headerLabel.translateByParentProportion(xFactor: 0, yFactor: -0.175, parent: self)
-        headerLabel.shiftOriginFromCenter(byFactor: -0.39, parent: self)
+        headerLabel.shiftOriginFromCenter(byFactor: shiftFactor, parent: self)
         self.addSubview(headerLabel)
     }
     
-    func initializeBody(){
+    func initializeBody(shiftFactor: CGFloat){
         let bodyText = "Complete this one-minute match so we can find the tutor that’s right for you!"
-        bodyLabel = CustomLabel(text: bodyText, style: .body1, lineWidthLimit: (0.39 * 2 * self.frame.width))
+        bodyLabel = CustomLabel(text: bodyText, style: .body1, lineWidthLimit: (abs(shiftFactor) * 2 * self.frame.width))
         bodyLabel.absoluteRepositionFromObject(headerLabel, parent: self, xOffset: 0, yOffset: 7)
-        bodyLabel.shiftOriginFromCenter(byFactor: -0.39, parent: self)
+        bodyLabel.shiftOriginFromCenter(byFactor: shiftFactor, parent: self)
         self.addSubview(bodyLabel)
     }
     
-    func initializeButton(){
-        button = ImageButton(activeImage: #imageLiteral(resourceName: "BeginButton-Regular"), highlightedImage: #imageLiteral(resourceName: "BeginButtonHighlighted-Regular"), parent: self, action: #selector(onClick))
+    func initializeButton(buttonTarget: Any, buttonSelector: Selector){
+        button = ImageButton(activeImage: #imageLiteral(resourceName: "BeginButton-Regular"), highlightedImage: #imageLiteral(resourceName: "BeginButtonHighlighted-Regular"), parent: self, target: buttonTarget, action: buttonSelector)
         button.centerInParent(self)
-        button.center.y = self.frame.height - (button.frame.height/2) - 15
+        button.relativeShiftFromEdge(x: nil, y: self.frame.height, byFactor: -0.14, parent: self)
         self.addSubview(button)
     }
     
-    func onClick(){
-        print("Button Clicked.")
-    }
-    
-    func slideIn(completionAction: ()?) {
-        super.slideIn(from: .bottom, to: self.titleLabel, spacingFactor: 0.03, duration: 0.5, parent: self.parentView, completionAction: completionAction)
+    func slideIn(to anchorObject: UIView, completionAction: ()?) {
+        super.slideIn(from: .bottom, to: anchorObject, spacingFactor: 0.03, duration: 0.5, parent: self.parentView, completionAction: completionAction)
     }
 }

@@ -17,7 +17,7 @@ class StartController: UIViewController {
         super.viewDidLoad()
         
         //Initialize background color
-        view.backgroundColor = FillColor.red
+        view.backgroundColor = CustomColor.red
         
         //Initialize title label
         companyNameLabel = CustomLabel(text: "The Tutor House", fontSize: FontSize.logo, fontWeight: "DemiBold", fontColor: UIColor.white)
@@ -43,12 +43,12 @@ class StartController: UIViewController {
     func shiftUpTitleElements(){
         //Move Label
         UIView.animate(withDuration: 0.7, delay: 0.7, options: [.curveEaseInOut], animations: {
-            self.companyNameLabel.translateByParentProportion(xFactor: 0, yFactor: -0.215, parent: self.view, mode: .positional)
+            self.companyNameLabel.translateByParentProportion(xFactor: 0, yFactor: -0.225, parent: self.view, mode: .positional)
         }, completion: nil)
         
         //Move Image
         UIView.animate(withDuration: 0.7, delay: 0.7, options: [.curveEaseInOut], animations: {
-            self.companyLogoImage.repositionFromObject(self.companyNameLabel, parent: self.view, xOffsetFactor: 0, yOffsetFactor: -0.01, mode: .positional)
+            self.companyLogoImage.repositionFromObject(self.companyNameLabel, parent: self.view, xOffsetFactor: 0, yOffsetFactor: -0.0175, mode: .positional)
         }, completion: { (finished: Bool) in
             self.initializeIntroCard()
         })
@@ -56,54 +56,30 @@ class StartController: UIViewController {
     
     var introCard = IntroCard(frame: CGRect.zero)
     func initializeIntroCard(){
-        introCard = IntroCard(in: view)
+        introCard = IntroCard(in: view, buttonTarget: self, buttonSelector: #selector(onButtonClick))
         view.addSubview(introCard)
-        introCard.slideIn(completionAction: nil)
+        introCard.slideIn(to: companyNameLabel, completionAction: {introCard.button.show(delay: 0.05)}())
     }
     
-    /*
-    func startSurvey(){
-        if verbosityLevel >= 3{
-            print("\nMethod startSurvey was run from StartController...")
-        }
+    func onButtonClick(){
+        //saveData()
         
-        //Hide intro card.
-        //Settings:
-        let introCardAnimationDelay: TimeInterval = 0.15
-        let introCardAnimationDuration: TimeInterval = 1.0
-        //Animation:
-        UIView.animate(withDuration: introCardAnimationDuration, delay: introCardAnimationDelay, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.4, options: [], animations: {
-            self.introCard.transform = CGAffineTransform.init(translationX: 0, y: self.view.frame.height)
-        }, completion: { (finished: Bool) in
-            self.introCard = UIImageView(frame: CGRect.zero)
-            if verbosityLevel >= 3{
-                print("...Intro card is now hidden, card data unloaded and reset.")
-            }
-        })
+        //Hide card
+        introCard.slideOut(delay: 0.1, parent: view, completionAction: nil)
         
-        //Hide title label.
-        //Settings:
-        let titleAnimationDuration: TimeInterval = 0.5
-        let titleLabelDelay: TimeInterval = 0.25
-        //Animation:
-        UIView.animate(withDuration: titleAnimationDuration, delay: titleLabelDelay, options: [.curveEaseInOut], animations: {
+        //Fade out label
+        UIView.animate(withDuration: 0.5, delay: 0.3, options: [.curveEaseInOut], animations: {
             self.companyNameLabel.alpha = 0
         }, completion: { (finished: Bool) in
-            self.companyNameLabel = UILabel()
-            if verbosityLevel >= 3{
-                print("...Finished animating the title label fadeout. Title data unloaded and reset.")
-            }
-            self.loadSurveyController()
+            self.loadNextController()
         })
     }
     
-    //Loads next viewcontroller, replacing the current one as root controller.
-    func loadSurveyController(){
+    func loadNextController(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let surveyVC: SurveyController = storyboard.instantiateViewController(withIdentifier: "SurveyController") as! SurveyController
+        let surveyVC: SurveyController1 = storyboard.instantiateViewController(withIdentifier: "SurveyController1") as! SurveyController1
         surveyVC.companyLogoImage = companyLogoImage
         let window = UIApplication.shared.windows[0]
         window.rootViewController = surveyVC
     }
-    */
 }

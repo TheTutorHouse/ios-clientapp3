@@ -26,7 +26,7 @@ class Card: UIImageView {
         case top, bottom, left, right
     }
     
-    func slideIn(from origin: Direction = .bottom, to anchorObject: UIView, spacingFactor: CGFloat, delay: TimeInterval = 0,duration: TimeInterval = 0.5, parent: UIView, completionAction: ()?){
+    func slideIn(from origin: Direction = .bottom, to anchorObject: UIView, spacingFactor: CGFloat, delay: TimeInterval = 0, duration: TimeInterval = 0.5, parent: UIView, completionAction: ()?){
         self.centerInParent(parent)
         
         switch origin{
@@ -45,7 +45,7 @@ class Card: UIImageView {
         }, completion: {finished in completionAction})
     }
     
-    func slideOut(to direction: Direction = .bottom, delay: TimeInterval = 0, duration: TimeInterval = 1.0, parent: UIView, completionAction: ()){
+    func slideOut(to direction: Direction = .bottom, delay: TimeInterval = 0, duration: TimeInterval = 1.0, parent: UIView, completionAction: ()?){
         var yShift: CGFloat = 0
         var xShift: CGFloat = 0
         
@@ -63,5 +63,9 @@ class Card: UIImageView {
         UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.4, options: [], animations: {
             self.transform = CGAffineTransform(translationX: xShift, y: yShift)
         }, completion: {finished in completionAction})
+    }
+    
+    func setupCard(){
+        self.isUserInteractionEnabled = true
     }
 }

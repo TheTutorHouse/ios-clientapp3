@@ -24,10 +24,10 @@ extension UIView{
         let xShiftValue = xFactor * parent.frame.width
         let yShiftValue = yFactor * parent.frame.height
         
-        absoluteTranslateByParentProportion(xShift: xShiftValue, yShift: yShiftValue, parent: parent, mode: mode)
+        absoluteTranslate(xShift: xShiftValue, yShift: yShiftValue, parent: parent, mode: mode)
     }
     
-    func absoluteTranslateByParentProportion(xShift: CGFloat, yShift: CGFloat, parent: UIView, mode: TransformMode = .positional){
+    func absoluteTranslate(xShift: CGFloat, yShift: CGFloat, parent: UIView, mode: TransformMode = .positional){
         switch mode{
         case .positional:
             self.center.x += xShift
@@ -86,7 +86,7 @@ extension UIView{
                 }
             }
         }
-        self.absoluteTranslateByParentProportion(xShift: xOffset ?? 0, yShift: yOffset ?? 0, parent: parent, mode: mode)
+        self.absoluteTranslate(xShift: xOffset ?? 0, yShift: yOffset ?? 0, parent: parent, mode: mode)
     }
     
     public enum Dimension{
@@ -113,6 +113,27 @@ extension UIView{
             self.frame = CGRect(x: self.center.x - (newWidth/2), y: self.center.y - (newHeight/2), width: newWidth, height: newHeight)
         case .graphical:
             print("Error: Graphical resizing option currently unavailable.")
+        }
+    }
+    
+    func relativeShiftFromEdge(x: CGFloat?, y: CGFloat?, byFactor factor: CGFloat, parent: UIView){
+        if let x = x{
+            let spacing = abs(self.frame.width/2)
+            if factor > 0 {
+                self.center.x = x + spacing + (factor * parent.frame.width)
+            }
+            else if factor < 0 {
+                self.center.x = x - spacing + (factor * parent.frame.width)
+            }
+        }
+        if let y = y{
+            let spacing = abs(self.frame.height/2)
+            if factor > 0{
+                self.center.y = y + spacing + (factor * parent.frame.height)
+            }
+            else if factor < 0 {
+                self.center.y = y - spacing + (factor * parent.frame.height)
+            }
         }
     }
     

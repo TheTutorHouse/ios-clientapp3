@@ -8,30 +8,30 @@
 
 import UIKit
 
-class SurveyController: UIViewController {
+class SurveyController1: UIViewController {
     
     var companyLogoImage: UIImageView!
     @IBOutlet weak var contentView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if verbosityLevel >= 3{
-            print("Method viewDidLoad was run from StartController.")
-        }
-        
-        contentView.backgroundColor = FillColor.red
+        contentView.backgroundColor = CustomColor.red
         contentView.addSubview(companyLogoImage)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //popInContactDetailsCard()
+        initializeSurveyCard1()
     }
     
+    var surveyCard1 = SurveyCard1(frame: CGRect.zero)
+    func initializeSurveyCard1(){
+        surveyCard1 = SurveyCard1(in: view)
+        contentView.addSubview(surveyCard1)
+        surveyCard1.slideIn(to: companyLogoImage, withSpacing: 0.03)
+    }
     
+    /*
     //First Survey Question - Contact Details
     //Settings:
     var contactDetailsCard: UIImageView!
@@ -49,5 +49,6 @@ class SurveyController: UIViewController {
     //Method:
     func popInContactDetailsCard(){
     }
+    */
 
 }

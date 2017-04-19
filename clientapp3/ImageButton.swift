@@ -14,16 +14,36 @@ class ImageButton: UIButton{
         super.init(coder: aDecoder)
     }
     
-    init(activeImage: UIImage, highlightedImage: UIImage, parent: UIView, action: Selector,inactiveImage: UIImage? = nil){
+    init(activeImage: UIImage, highlightedImage: UIImage?, parent: UIView, target undefinedTarget: Any, action: Selector,inactiveImage: UIImage? = nil){
         super.init(frame: CGRect.zero)
         super.setImage(activeImage, for: .normal)
         super.setImage(highlightedImage, for: .highlighted)
+        
         if let inactiveImage = inactiveImage {
             super.setImage(inactiveImage, for: .disabled)
         }
+        
         super.sizeToFit()
-        self.clipsToBounds = true
-        self.addTarget(parent, action: action, for: .touchUpInside)
+        self.clipsToBounds = false
+        
+        if let target = undefinedTarget as? UIView{
+            self.addTarget(target, action: action, for: .touchUpInside)
+        }
+        else if let target = undefinedTarget as? UIViewController{
+            self.addTarget(target, action: action, for: .touchUpInside)
+        }
+    }
+    
+    func hide(){
+        self.isHidden = true
+        self.alpha = 0
+    }
+    
+    func show(delay: TimeInterval){
+        self.isHidden = false
+        UIView.animate(withDuration: 0.4, delay: delay, options: .curveEaseInOut, animations: {
+            self.alpha = 1
+        }, completion: nil)
     }
     
     override init(frame: CGRect) {

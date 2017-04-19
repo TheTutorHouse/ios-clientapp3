@@ -11,7 +11,7 @@ import UIKit
 class CustomLabel: UILabel{
     
     enum FontStyle {
-        case header1, header2, body1
+        case header1, header2, header3, body1
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,7 +34,7 @@ class CustomLabel: UILabel{
     }
     
     func shiftOriginFromCenter(byFactor offsetFactor: CGFloat, parent: UIView){
-        self.frame.origin.x = parent.center.x + (offsetFactor * parent.frame.width)
+        self.frame.origin.x = parent.frame.width/2 + (offsetFactor * parent.frame.width)
     }
     
     convenience init(text: String, style: FontStyle, lineWidthLimit: CGFloat? = nil) {
@@ -52,6 +52,11 @@ class CustomLabel: UILabel{
             fontSize = FontSize.header2
             fontWeight = "Medium"
             fontColor = FontColor.headerGrey2
+            
+        case .header3:
+            fontSize = FontSize.header2
+            fontWeight = "Medium"
+            fontColor = FontColor.headerGrey3
             
         case .body1:
             fontSize = FontSize.body1
