@@ -20,7 +20,7 @@ class StartController: UIViewController {
         view.backgroundColor = CustomColor.red
         
         //Initialize title label
-        companyNameLabel = CustomLabel(text: "The Tutor House", fontSize: FontSize.logo, fontWeight: "DemiBold", fontColor: UIColor.white)
+        companyNameLabel = CustomLabel(text: "The Tutor House", fontSize: CustomFontSize.logo, fontWeight: "DemiBold", fontColor: UIColor.white)
         companyNameLabel.centerInParent(view)
         companyNameLabel.translateByParentProportion(xFactor: 0, yFactor: 0.037, parent: view)
         view.addSubview(companyNameLabel)

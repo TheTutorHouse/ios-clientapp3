@@ -17,7 +17,7 @@ class CustomTextField: UITextField{
         super.encode(with: aCoder)
     }
     
-    enum FontStyle{
+    enum Style{
         case `default`
         case customBorders
     }
@@ -26,7 +26,7 @@ class CustomTextField: UITextField{
         super.init(frame: frame)
     }
     
-    init(parent: UIView, widthFactor: CGFloat, fontStyle: FontStyle = .default, delegate: UITextFieldDelegate, placeHolder: String? = nil, enableAutocorrect: Bool = false) {
+    init(parent: UIView, widthFactor: CGFloat, style: Style = .default, delegate: UITextFieldDelegate, placeHolder: String? = nil, enableAutocorrect: Bool = false) {
         let textFieldWidth = parent.frame.width * widthFactor
         let centerX = (parent.frame.width/2)
         let centerY = (parent.frame.height/2)
@@ -46,12 +46,12 @@ class CustomTextField: UITextField{
         self.clearButtonMode = .whileEditing
         self.contentVerticalAlignment = .center
         
-        initializeContentValues(fontStyle: fontStyle, placeHolder: placeHolder)
+        initializeContentValues(style: style, placeHolder: placeHolder)
     }
     
-    func initializeContentValues(fontStyle: FontStyle, placeHolder: String?){
+    func initializeContentValues(style: Style, placeHolder: String?){
         self.placeholder = placeHolder
-        switch fontStyle{
+        switch style{
         case .customBorders:
             self.layer.borderWidth = 1
             fallthrough
@@ -59,7 +59,8 @@ class CustomTextField: UITextField{
         case .default:
             self.backgroundColor = CustomColor.textFieldGrey
             self.layer.borderColor = CustomColor.textFieldGrey2.cgColor
-            self.font = UIFont(name: "AvenirNext-Regular", size: FontSize.textField)
+            self.font = UIFont(name: "AvenirNext-Regular", size: CustomFontSize.textField)
+            self.textColor = CustomFontColor.bodyGrey1
         }
     }
 }

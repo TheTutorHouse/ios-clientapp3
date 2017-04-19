@@ -10,64 +10,59 @@ import UIKit
 
 class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
     var parentView: UIView
-    var bottomDividerLeft: HorizontalLine
-    var bottomDividerRight: HorizontalLine
     var nameTextField: CustomTextField
     var nameTextLabel: CustomLabel
     var emailTextField: CustomTextField
     var emailTextLabel: CustomLabel
     var gradeTextLabel: CustomLabel
+    var horizontalDivider: UIImageView
     var gradeButtons: [CustomButton]
     
     required init?(coder aDecoder: NSCoder) {
         parentView = aDecoder.decodeObject(forKey: "SurveyCard1-parentView") as! UIView
-        bottomDividerLeft = aDecoder.decodeObject(forKey: "SurveyCard1-bottomDividerLeft") as! HorizontalLine
-        bottomDividerRight = aDecoder.decodeObject(forKey: "SurveyCard1-bottomDividerRight") as! HorizontalLine
         nameTextField = aDecoder.decodeObject(forKey: "SurveyCard1-nameTextField") as! CustomTextField
         emailTextField = aDecoder.decodeObject(forKey: "SurveyCard1-emailTextField") as! CustomTextField
         nameTextLabel = aDecoder.decodeObject(forKey: "SurveyCard1-nameTextLabel") as! CustomLabel
         emailTextLabel = aDecoder.decodeObject(forKey: "SurveyCard1-emailTextLabel") as! CustomLabel
         gradeTextLabel = aDecoder.decodeObject(forKey: "SurveyCard1-gradeTextLabel") as! CustomLabel
         gradeButtons = aDecoder.decodeObject(forKey: "SurveyCard1-gradeButtons") as! [CustomButton]
+        horizontalDivider = aDecoder.decodeObject(forKey: "SurveyCard1-divierView") as! UIImageView
         super.init(coder: aDecoder)
     }
     
     override func encode(with aCoder: NSCoder) {
         aCoder.encode(parentView, forKey: "SurveyCard1-parentView")
-        aCoder.encode(bottomDividerLeft, forKey: "SurveyCard1-bottomDividerLeft")
-        aCoder.encode(bottomDividerRight, forKey: "SurveyCard1-bottomDividerRight")
         aCoder.encode(nameTextField, forKey: "SurveyCard1-nameTextField")
         aCoder.encode(emailTextField, forKey: "SurveyCard1-emailTextField")
         aCoder.encode(nameTextLabel, forKey: "SurveyCard1-nameTextLabel")
         aCoder.encode(emailTextLabel, forKey: "SurveyCard1-emailTextLabel")
         aCoder.encode(gradeTextLabel, forKey: "SurveyCard1-gradeTextLabel")
         aCoder.encode(gradeButtons, forKey: "SurveyCard1-gradeButtons")
+        aCoder.encode(horizontalDivider, forKey: "SurveyCard1-dividerView")
         super.encode(with: aCoder)
     }
     
     override init(frame: CGRect) {
         parentView = UIView(frame: CGRect.zero)
-        bottomDividerLeft = HorizontalLine()
-        bottomDividerRight = HorizontalLine()
         nameTextField = CustomTextField(frame: CGRect.zero)
         emailTextField = CustomTextField(frame: CGRect.zero)
         nameTextLabel = CustomLabel(frame: CGRect.zero)
         emailTextLabel = CustomLabel(frame: CGRect.zero)
         gradeTextLabel = CustomLabel(frame: CGRect.zero)
+        horizontalDivider = UIImageView(frame: CGRect.zero)
         gradeButtons = [CustomButton]()
         super.init(frame: frame)
     }
     
     init(in parentView: UIView) {
         self.parentView = parentView
-        self.bottomDividerLeft = HorizontalLine()
-        self.bottomDividerRight = HorizontalLine()
         self.nameTextField = CustomTextField(frame: CGRect.zero)
         emailTextField = CustomTextField(frame: CGRect.zero)
         nameTextLabel = CustomLabel(frame: CGRect.zero)
         emailTextLabel = CustomLabel(frame: CGRect.zero)
         gradeTextLabel = CustomLabel(frame: CGRect.zero)
         gradeButtons = [CustomButton]()
+        horizontalDivider = UIImageView(frame: CGRect.zero)
         super.init(image: #imageLiteral(resourceName: "SurveyCard1-Medium"))
         
         setupCard()
@@ -76,9 +71,8 @@ class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
         initializeEmailSection()
         initializeNextButton()
         initializeGradeSection()
-        initializeBottomDivider()
-        nextButton.hide()
-        hideBottomDivider()
+        initializeDivider()
+        hideDivider()
     }
     
     override func setupCard() {
@@ -103,7 +97,7 @@ class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
         
         nameTextField = CustomTextField.init(parent: self, widthFactor: 0.8, delegate: self, placeHolder: "Jane Appleseed", enableAutocorrect: false)
         nameTextField.absoluteRepositionFromObject(nameTextLabel, parent: self, xOffset: nil, yOffset: 5)
-        nameTextField.autocapitalizationType = .allCharacters
+        nameTextField.autocapitalizationType = .words
         self.addSubview(nameTextField)
     }
     
@@ -187,24 +181,18 @@ class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
         }
     }
     
-    func initializeBottomDivider(){
-        bottomDividerLeft = HorizontalLine.init(parent: self, verticalOffsetFactorFromCenter: 0, lengthFactor: 0.8, color: CustomColor.grey1, partialSection: .left)
-        bottomDividerLeft.offsetFrom(nextButton, by: -0.04, mode: .relative, parent: self)
-        self.layer.addSublayer(bottomDividerLeft)
-        
-        bottomDividerRight = HorizontalLine(parent: self, verticalOffsetFactorFromCenter: 0, lengthFactor: 0.8, color: CustomColor.grey1, partialSection: .right)
-        bottomDividerRight.offsetFrom(nextButton, by: -0.04, mode: .relative, parent: self)
-        self.layer.addSublayer(bottomDividerRight)
+    func initializeDivider(){
+        horizontalDivider = UIImageView.init(image: #imageLiteral(resourceName: "HorizontalLine1"))
+        horizontalDivider.centerInParent(self)
+        horizontalDivider.resizeProportionallyBy(.width, parent: self, byFactor: 0.8, mode: .positional)
+        horizontalDivider.repositionFromObject(nextButton, parent: self, xOffsetFactor: nil, yOffsetFactor: -0.04, mode: .positional)
+        self.addSubview(horizontalDivider)
     }
     
-    func animateBottomDivider(duration: CFTimeInterval, delay: CFTimeInterval, completionAction: ()?){
-        bottomDividerRight.animate(duration: duration, delay: delay, completionAction: completionAction)
-        bottomDividerLeft.animate(duration: duration, delay: delay, completionAction: completionAction)
-    }
-    
-    func hideBottomDivider(){
-        bottomDividerLeft.hide()
-        bottomDividerRight.hide()
+    func animateDivider(duration: TimeInterval, delay: TimeInterval){
+        UIView.animate(withDuration: duration, delay: delay, options: .curveEaseInOut, animations: {
+            self.horizontalDivider.alpha = 1
+        }, completion: nil)
     }
     
     func initializeNextButton(){
@@ -218,11 +206,27 @@ class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
     }
     
     func slideIn(to anchorObject: UIView, withSpacing spacingFactor: CGFloat) {
-        super.slideIn(from: .bottom, to: anchorObject, spacingFactor: spacingFactor, duration: 0.5, parent: self.parentView, completionAction: loadBottomElements())
+        super.slideIn(from: .bottom, to: anchorObject, spacingFactor: spacingFactor, duration: 0.5, parent: self.parentView, completionAction: animateElements())
     }
     
-    func loadBottomElements(){
-        nextButton.show(delay: 0.5)
-        animateBottomDivider(duration: 0.9, delay: 0.4, completionAction: nil)
+    func hideDivider(){
+        horizontalDivider.alpha = 0
+    }
+    
+    func animateElements(){
+        slideInSurveyObject(object: nameTextLabel, from: .left, delay: 0.1, duration: 0.5)
+        slideInSurveyObject(object: nameTextField, from: .left, delay: 0.2, duration: 0.5)
+        slideInSurveyObject(object: emailTextLabel, from: .left, delay: 0.3, duration: 0.5)
+        slideInSurveyObject(object: emailTextField, from: .left, delay: 0.4, duration: 0.5)
+        slideInSurveyObject(object: gradeTextLabel, from: .left, delay: 0.5, duration: 0.5)
+        for counter in 0...(gradeButtons.count - 1){
+            slideInSurveyObject(object: gradeButtons[counter], from: .bottom, delay: (0.65 + (TimeInterval(counter)*0.05)), duration: 0.45, parent: self, completionAction: nil)
+        }
+        animateDivider(duration: 0.4, delay: 0.7)
+        slideInSurveyObject(object: nextButton, from: .bottom, delay: 0.9, duration: 0.3)
+    }
+    
+    func slideInSurveyObject(object: UIView, from origin: Card.Direction, delay: TimeInterval, duration: TimeInterval) {
+        super.slideInSurveyObject(object: object, from: origin, delay: delay, duration: delay, parent: self, completionAction: nil)
     }
 }

@@ -32,10 +32,10 @@ class HorizontalLine: CAShapeLayer{
         if let partialSection = partialSection{
             switch partialSection{
             case .left:
-                startPoint = CGPoint(x: (length/2), y: yVal)
+                startPoint = CGPoint(x: (parent.frame.width/2), y: yVal)
                 endPoint = CGPoint(x: leftX, y: yVal)
             case .right:
-                startPoint = CGPoint(x: (length/2), y: yVal)
+                startPoint = CGPoint(x: (parent.frame.width/2), y: yVal)
                 endPoint = CGPoint(x: rightX, y: yVal)
             }
         }
@@ -60,18 +60,13 @@ class HorizontalLine: CAShapeLayer{
     }
     
     func animate(duration: CFTimeInterval, delay: CFTimeInterval, completionAction: ()?){
-        CATransaction.begin()
-        CATransaction.setCompletionBlock({
-            completionAction
-        })
-        self.opacity = 1
         let pathAnimation = CABasicAnimation(keyPath: "strokeEnd")
         pathAnimation.duration = duration
+        pathAnimation.beginTime = CACurrentMediaTime() + delay
         pathAnimation.fromValue = 0
         pathAnimation.toValue = 1.0
         pathAnimation.timingFunction = CAMediaTimingFunction.init(controlPoints: 0.65, 0.00, 0.35, 1)
         self.add(pathAnimation, forKey: nil)
-        CATransaction.commit()
     }
     
     func offsetFrom(_ object: UIView, direction axis: Axis = .vertical, by offset: CGFloat, mode: TransformMode, parent: UIView){
