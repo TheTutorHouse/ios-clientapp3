@@ -7,13 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31B91A271EA8FF3F0042D8A1 /* LogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A261EA8FF3F0042D8A1 /* LogoImage.swift */; };
+		31B91A2B1EA9013C0042D8A1 /* StartLogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A2A1EA9013C0042D8A1 /* StartLogoImage.swift */; };
+		31B91A2D1EA9054B0042D8A1 /* LogoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A2C1EA9054B0042D8A1 /* LogoLabel.swift */; };
+		31B91A2F1EA905E90042D8A1 /* StartLogoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A2E1EA905E90042D8A1 /* StartLogoLabel.swift */; };
+		31B91A341EA919130042D8A1 /* IntroCardTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A331EA919130042D8A1 /* IntroCardTitleLabel.swift */; };
+		31B91A391EA91AFC0042D8A1 /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A381EA91AFC0042D8A1 /* HeaderLabel.swift */; };
+		31B91A3B1EA927ED0042D8A1 /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A3A1EA927ED0042D8A1 /* BodyLabel.swift */; };
+		31B91A3D1EA929BF0042D8A1 /* IntroCardTitleUnderline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A3C1EA929BF0042D8A1 /* IntroCardTitleUnderline.swift */; };
+		31B91A3F1EA92A9A0042D8A1 /* IntroCardHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A3E1EA92A9A0042D8A1 /* IntroCardHeaderLabel.swift */; };
+		31B91A421EA92BB30042D8A1 /* IntroCardBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A411EA92BB30042D8A1 /* IntroCardBodyLabel.swift */; };
+		31B91A441EA92E230042D8A1 /* IntroCardBeginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A431EA92E230042D8A1 /* IntroCardBeginButton.swift */; };
+		31B91A4C1EA93D360042D8A1 /* SurveyCard1NameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A4B1EA93D360042D8A1 /* SurveyCard1NameLabel.swift */; };
+		31B91A4E1EA93E010042D8A1 /* SurveyCard1NameField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A4D1EA93E010042D8A1 /* SurveyCard1NameField.swift */; };
+		31B91A511EA93F1F0042D8A1 /* SurveyCard1EmailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A501EA93F1F0042D8A1 /* SurveyCard1EmailLabel.swift */; };
+		31B91A531EA93F270042D8A1 /* SurveyCard1EmailField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A521EA93F270042D8A1 /* SurveyCard1EmailField.swift */; };
 		31C33B541EA3044700C3E5F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B531EA3044700C3E5F4 /* AppDelegate.swift */; };
 		31C33B561EA3044700C3E5F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B551EA3044700C3E5F4 /* ViewController.swift */; };
 		31C33B591EA3044700C3E5F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C33B571EA3044700C3E5F4 /* Main.storyboard */; };
 		31C33B5B1EA3044700C3E5F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31C33B5A1EA3044700C3E5F4 /* Assets.xcassets */; };
 		31C33B5E1EA3044700C3E5F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C33B5C1EA3044700C3E5F4 /* LaunchScreen.storyboard */; };
 		31C33B661EA3056400C3E5F4 /* StartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B651EA3056400C3E5F4 /* StartController.swift */; };
-		31C33B731EA4863D00C3E5F4 /* SurveyController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B721EA4863D00C3E5F4 /* SurveyController1.swift */; };
+		31C33B731EA4863D00C3E5F4 /* SurveyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B721EA4863D00C3E5F4 /* SurveyController.swift */; };
 		31C33B751EA4F71A00C3E5F4 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B741EA4F71A00C3E5F4 /* Card.swift */; };
 		31C33B7C1EA4FD7E00C3E5F4 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B7B1EA4FD7E00C3E5F4 /* CustomLabel.swift */; };
 		31D748771EA5122B00924748 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D748761EA5122B00924748 /* UIExtensions.swift */; };
@@ -25,10 +40,27 @@
 		31D748841EA5A07E00924748 /* SurveyCard1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D748831EA5A07E00924748 /* SurveyCard1.swift */; };
 		31D748861EA68B8000924748 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D748851EA68B8000924748 /* CustomTextField.swift */; };
 		31D748891EA6F9DF00924748 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D748881EA6F9DF00924748 /* CustomColor.swift */; };
-		31D7488B1EA6FE5000924748 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7488A1EA6FE5000924748 /* CustomFont.swift */; };
+		31F6B76D1EA952CB0050D689 /* SurveyCard1GradeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F6B76C1EA952CB0050D689 /* SurveyCard1GradeLabel.swift */; };
+		31F6B76F1EA953FA0050D689 /* SurveyCard1GradeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F6B76E1EA953FA0050D689 /* SurveyCard1GradeButton.swift */; };
+		31F6B7711EA95E8E0050D689 /* SurveyCard1Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F6B7701EA95E8E0050D689 /* SurveyCard1Divider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31B91A261EA8FF3F0042D8A1 /* LogoImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoImage.swift; sourceTree = "<group>"; };
+		31B91A2A1EA9013C0042D8A1 /* StartLogoImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartLogoImage.swift; sourceTree = "<group>"; };
+		31B91A2C1EA9054B0042D8A1 /* LogoLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoLabel.swift; sourceTree = "<group>"; };
+		31B91A2E1EA905E90042D8A1 /* StartLogoLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartLogoLabel.swift; sourceTree = "<group>"; };
+		31B91A331EA919130042D8A1 /* IntroCardTitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroCardTitleLabel.swift; sourceTree = "<group>"; };
+		31B91A381EA91AFC0042D8A1 /* HeaderLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
+		31B91A3A1EA927ED0042D8A1 /* BodyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
+		31B91A3C1EA929BF0042D8A1 /* IntroCardTitleUnderline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroCardTitleUnderline.swift; sourceTree = "<group>"; };
+		31B91A3E1EA92A9A0042D8A1 /* IntroCardHeaderLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroCardHeaderLabel.swift; sourceTree = "<group>"; };
+		31B91A411EA92BB30042D8A1 /* IntroCardBodyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroCardBodyLabel.swift; sourceTree = "<group>"; };
+		31B91A431EA92E230042D8A1 /* IntroCardBeginButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroCardBeginButton.swift; sourceTree = "<group>"; };
+		31B91A4B1EA93D360042D8A1 /* SurveyCard1NameLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard1NameLabel.swift; sourceTree = "<group>"; };
+		31B91A4D1EA93E010042D8A1 /* SurveyCard1NameField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard1NameField.swift; sourceTree = "<group>"; };
+		31B91A501EA93F1F0042D8A1 /* SurveyCard1EmailLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard1EmailLabel.swift; sourceTree = "<group>"; };
+		31B91A521EA93F270042D8A1 /* SurveyCard1EmailField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard1EmailField.swift; sourceTree = "<group>"; };
 		31C33B501EA3044700C3E5F4 /* clientapp3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = clientapp3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31C33B531EA3044700C3E5F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31C33B551EA3044700C3E5F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,7 +69,7 @@
 		31C33B5D1EA3044700C3E5F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31C33B5F1EA3044700C3E5F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31C33B651EA3056400C3E5F4 /* StartController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartController.swift; sourceTree = "<group>"; };
-		31C33B721EA4863D00C3E5F4 /* SurveyController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyController1.swift; sourceTree = "<group>"; };
+		31C33B721EA4863D00C3E5F4 /* SurveyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyController.swift; sourceTree = "<group>"; };
 		31C33B741EA4F71A00C3E5F4 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		31C33B7B1EA4FD7E00C3E5F4 /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		31D748761EA5122B00924748 /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
@@ -49,7 +81,9 @@
 		31D748831EA5A07E00924748 /* SurveyCard1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SurveyCard1.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		31D748851EA68B8000924748 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CustomTextField.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		31D748881EA6F9DF00924748 /* CustomColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
-		31D7488A1EA6FE5000924748 /* CustomFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
+		31F6B76C1EA952CB0050D689 /* SurveyCard1GradeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard1GradeLabel.swift; sourceTree = "<group>"; };
+		31F6B76E1EA953FA0050D689 /* SurveyCard1GradeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard1GradeButton.swift; sourceTree = "<group>"; };
+		31F6B7701EA95E8E0050D689 /* SurveyCard1Divider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard1Divider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +97,144 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31B91A231EA8F15D0042D8A1 /* Survey Card 1 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Survey Card 1";
+			sourceTree = "<group>";
+		};
+		31B91A241EA8FF0E0042D8A1 /* Specific Elements */ = {
+			isa = PBXGroup;
+			children = (
+				31B91A251EA8FF170042D8A1 /* Title & Logo Elements */,
+				31B91A371EA91AB30042D8A1 /* Labels */,
+			);
+			name = "Specific Elements";
+			sourceTree = "<group>";
+		};
+		31B91A251EA8FF170042D8A1 /* Title & Logo Elements */ = {
+			isa = PBXGroup;
+			children = (
+				31B91A2C1EA9054B0042D8A1 /* LogoLabel.swift */,
+				31B91A261EA8FF3F0042D8A1 /* LogoImage.swift */,
+			);
+			name = "Title & Logo Elements";
+			sourceTree = "<group>";
+		};
+		31B91A281EA901110042D8A1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				31B91A291EA9011E0042D8A1 /* Start Controller */,
+				31B91A451EA938620042D8A1 /* Survey Controller */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		31B91A291EA9011E0042D8A1 /* Start Controller */ = {
+			isa = PBXGroup;
+			children = (
+				31C33B651EA3056400C3E5F4 /* StartController.swift */,
+				31B91A301EA917EF0042D8A1 /* Components */,
+				31B91A311EA9189C0042D8A1 /* Cards */,
+			);
+			name = "Start Controller";
+			sourceTree = "<group>";
+		};
+		31B91A301EA917EF0042D8A1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				31B91A2A1EA9013C0042D8A1 /* StartLogoImage.swift */,
+				31B91A2E1EA905E90042D8A1 /* StartLogoLabel.swift */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		31B91A311EA9189C0042D8A1 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				31D748781EA52CA700924748 /* IntroCard.swift */,
+				31B91A321EA918DB0042D8A1 /* Components */,
+			);
+			name = Cards;
+			sourceTree = "<group>";
+		};
+		31B91A321EA918DB0042D8A1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				31B91A331EA919130042D8A1 /* IntroCardTitleLabel.swift */,
+				31B91A3C1EA929BF0042D8A1 /* IntroCardTitleUnderline.swift */,
+				31B91A3E1EA92A9A0042D8A1 /* IntroCardHeaderLabel.swift */,
+				31B91A411EA92BB30042D8A1 /* IntroCardBodyLabel.swift */,
+				31B91A431EA92E230042D8A1 /* IntroCardBeginButton.swift */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		31B91A371EA91AB30042D8A1 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				31B91A381EA91AFC0042D8A1 /* HeaderLabel.swift */,
+				31B91A3A1EA927ED0042D8A1 /* BodyLabel.swift */,
+			);
+			name = Labels;
+			sourceTree = "<group>";
+		};
+		31B91A451EA938620042D8A1 /* Survey Controller */ = {
+			isa = PBXGroup;
+			children = (
+				31C33B721EA4863D00C3E5F4 /* SurveyController.swift */,
+				31B91A471EA938860042D8A1 /* Cards */,
+			);
+			name = "Survey Controller";
+			sourceTree = "<group>";
+		};
+		31B91A471EA938860042D8A1 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				31B91A481EA939310042D8A1 /* Survey Card 1 */,
+			);
+			name = Cards;
+			sourceTree = "<group>";
+		};
+		31B91A481EA939310042D8A1 /* Survey Card 1 */ = {
+			isa = PBXGroup;
+			children = (
+				31D748831EA5A07E00924748 /* SurveyCard1.swift */,
+				31B91A491EA939530042D8A1 /* Components */,
+			);
+			name = "Survey Card 1";
+			sourceTree = "<group>";
+		};
+		31B91A491EA939530042D8A1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				31B91A4A1EA93D130042D8A1 /* Name Section */,
+				31B91A4F1EA93F0A0042D8A1 /* Email Section */,
+				31F6B76B1EA952A60050D689 /* Grade Section */,
+				31F6B7701EA95E8E0050D689 /* SurveyCard1Divider.swift */,
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
+		31B91A4A1EA93D130042D8A1 /* Name Section */ = {
+			isa = PBXGroup;
+			children = (
+				31B91A4B1EA93D360042D8A1 /* SurveyCard1NameLabel.swift */,
+				31B91A4D1EA93E010042D8A1 /* SurveyCard1NameField.swift */,
+			);
+			name = "Name Section";
+			sourceTree = "<group>";
+		};
+		31B91A4F1EA93F0A0042D8A1 /* Email Section */ = {
+			isa = PBXGroup;
+			children = (
+				31B91A501EA93F1F0042D8A1 /* SurveyCard1EmailLabel.swift */,
+				31B91A521EA93F270042D8A1 /* SurveyCard1EmailField.swift */,
+			);
+			name = "Email Section";
+			sourceTree = "<group>";
+		};
 		31C33B471EA3044700C3E5F4 = {
 			isa = PBXGroup;
 			children = (
@@ -82,10 +254,9 @@
 		31C33B521EA3044700C3E5F4 /* clientapp3 */ = {
 			isa = PBXGroup;
 			children = (
+				31B91A281EA901110042D8A1 /* Controllers */,
 				31C33B531EA3044700C3E5F4 /* AppDelegate.swift */,
 				31C33B551EA3044700C3E5F4 /* ViewController.swift */,
-				31C33B651EA3056400C3E5F4 /* StartController.swift */,
-				31C33B721EA4863D00C3E5F4 /* SurveyController1.swift */,
 				31C33B761EA4F71E00C3E5F4 /* UIElements */,
 				31D748761EA5122B00924748 /* UIExtensions.swift */,
 				31C33B571EA3044700C3E5F4 /* Main.storyboard */,
@@ -99,8 +270,9 @@
 		31C33B761EA4F71E00C3E5F4 /* UIElements */ = {
 			isa = PBXGroup;
 			children = (
+				31B91A241EA8FF0E0042D8A1 /* Specific Elements */,
 				31D748871EA6EAB700924748 /* Colors and Fonts */,
-				31C33B781EA4FAF600C3E5F4 /* Elements */,
+				31C33B781EA4FAF600C3E5F4 /* Custom Base Elements */,
 				31C33B771EA4FADD00C3E5F4 /* Cards */,
 			);
 			name = UIElements;
@@ -109,16 +281,13 @@
 		31C33B771EA4FADD00C3E5F4 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
-				31C33B741EA4F71A00C3E5F4 /* Card.swift */,
-				31D748781EA52CA700924748 /* IntroCard.swift */,
-				31D7487E1EA58DCE00924748 /* SurveyCard.swift */,
-				31D748801EA59F9400924748 /* SurveyCardWithTitle.swift */,
+				31EED8CB1EA7D3E700EDA21C /* Templates */,
 				31D748821EA5A06400924748 /* SurveyCards */,
 			);
 			name = Cards;
 			sourceTree = "<group>";
 		};
-		31C33B781EA4FAF600C3E5F4 /* Elements */ = {
+		31C33B781EA4FAF600C3E5F4 /* Custom Base Elements */ = {
 			isa = PBXGroup;
 			children = (
 				31C33B7B1EA4FD7E00C3E5F4 /* CustomLabel.swift */,
@@ -126,13 +295,13 @@
 				31D7487C1EA5471F00924748 /* HorizontalLine.swift */,
 				31D748851EA68B8000924748 /* CustomTextField.swift */,
 			);
-			name = Elements;
+			name = "Custom Base Elements";
 			sourceTree = "<group>";
 		};
 		31D748821EA5A06400924748 /* SurveyCards */ = {
 			isa = PBXGroup;
 			children = (
-				31D748831EA5A07E00924748 /* SurveyCard1.swift */,
+				31B91A231EA8F15D0042D8A1 /* Survey Card 1 */,
 			);
 			name = SurveyCards;
 			sourceTree = "<group>";
@@ -141,9 +310,27 @@
 			isa = PBXGroup;
 			children = (
 				31D748881EA6F9DF00924748 /* CustomColor.swift */,
-				31D7488A1EA6FE5000924748 /* CustomFont.swift */,
 			);
 			name = "Colors and Fonts";
+			sourceTree = "<group>";
+		};
+		31EED8CB1EA7D3E700EDA21C /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				31C33B741EA4F71A00C3E5F4 /* Card.swift */,
+				31D7487E1EA58DCE00924748 /* SurveyCard.swift */,
+				31D748801EA59F9400924748 /* SurveyCardWithTitle.swift */,
+			);
+			name = Templates;
+			sourceTree = "<group>";
+		};
+		31F6B76B1EA952A60050D689 /* Grade Section */ = {
+			isa = PBXGroup;
+			children = (
+				31F6B76C1EA952CB0050D689 /* SurveyCard1GradeLabel.swift */,
+				31F6B76E1EA953FA0050D689 /* SurveyCard1GradeButton.swift */,
+			);
+			name = "Grade Section";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,22 +406,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31B91A3B1EA927ED0042D8A1 /* BodyLabel.swift in Sources */,
 				31D748841EA5A07E00924748 /* SurveyCard1.swift in Sources */,
+				31B91A341EA919130042D8A1 /* IntroCardTitleLabel.swift in Sources */,
+				31F6B7711EA95E8E0050D689 /* SurveyCard1Divider.swift in Sources */,
 				31D7487F1EA58DCE00924748 /* SurveyCard.swift in Sources */,
 				31D748891EA6F9DF00924748 /* CustomColor.swift in Sources */,
 				31C33B561EA3044700C3E5F4 /* ViewController.swift in Sources */,
+				31B91A3D1EA929BF0042D8A1 /* IntroCardTitleUnderline.swift in Sources */,
 				31D748771EA5122B00924748 /* UIExtensions.swift in Sources */,
+				31B91A531EA93F270042D8A1 /* SurveyCard1EmailField.swift in Sources */,
+				31F6B76F1EA953FA0050D689 /* SurveyCard1GradeButton.swift in Sources */,
 				31D748861EA68B8000924748 /* CustomTextField.swift in Sources */,
+				31B91A391EA91AFC0042D8A1 /* HeaderLabel.swift in Sources */,
 				31C33B541EA3044700C3E5F4 /* AppDelegate.swift in Sources */,
 				31D748811EA59F9400924748 /* SurveyCardWithTitle.swift in Sources */,
-				31D7488B1EA6FE5000924748 /* CustomFont.swift in Sources */,
+				31B91A441EA92E230042D8A1 /* IntroCardBeginButton.swift in Sources */,
 				31D7487D1EA5471F00924748 /* HorizontalLine.swift in Sources */,
+				31B91A511EA93F1F0042D8A1 /* SurveyCard1EmailLabel.swift in Sources */,
+				31B91A2F1EA905E90042D8A1 /* StartLogoLabel.swift in Sources */,
+				31F6B76D1EA952CB0050D689 /* SurveyCard1GradeLabel.swift in Sources */,
+				31B91A421EA92BB30042D8A1 /* IntroCardBodyLabel.swift in Sources */,
 				31D748791EA52CA700924748 /* IntroCard.swift in Sources */,
+				31B91A4E1EA93E010042D8A1 /* SurveyCard1NameField.swift in Sources */,
 				31C33B661EA3056400C3E5F4 /* StartController.swift in Sources */,
 				31C33B7C1EA4FD7E00C3E5F4 /* CustomLabel.swift in Sources */,
 				31D7487B1EA53BA400924748 /* CustomButton.swift in Sources */,
-				31C33B731EA4863D00C3E5F4 /* SurveyController1.swift in Sources */,
+				31C33B731EA4863D00C3E5F4 /* SurveyController.swift in Sources */,
+				31B91A2B1EA9013C0042D8A1 /* StartLogoImage.swift in Sources */,
+				31B91A271EA8FF3F0042D8A1 /* LogoImage.swift in Sources */,
+				31B91A3F1EA92A9A0042D8A1 /* IntroCardHeaderLabel.swift in Sources */,
+				31B91A2D1EA9054B0042D8A1 /* LogoLabel.swift in Sources */,
 				31C33B751EA4F71A00C3E5F4 /* Card.swift in Sources */,
+				31B91A4C1EA93D360042D8A1 /* SurveyCard1NameLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,11 +9,11 @@
 import UIKit
 
 class SurveyCardWithTitle: SurveyCard{
-    var titleLabel: CustomLabel
+    var titleLabel: HeaderLabel
     var titleUnderline: HorizontalLine
     
     required init?(coder aDecoder: NSCoder) {
-        titleLabel = aDecoder.decodeObject(forKey: "SurveyCardWithTitle-titleLabel") as! CustomLabel
+        titleLabel = aDecoder.decodeObject(forKey: "SurveyCardWithTitle-titleLabel") as! HeaderLabel
         titleUnderline = aDecoder.decodeObject(forKey: "SurveyCardWithTitle-titleUnderline") as! HorizontalLine
         super.init(coder: aDecoder)
     }
@@ -25,27 +25,30 @@ class SurveyCardWithTitle: SurveyCard{
     }
     
     override init(frame: CGRect) {
-        titleLabel = CustomLabel(frame: CGRect.zero)
+        titleLabel = HeaderLabel(frame: CGRect.zero)
         titleUnderline = HorizontalLine()
         super.init(frame: frame)
     }
     
-    override init(image: UIImage?) {
-        titleLabel = CustomLabel(frame: CGRect.zero)
+    init(image: UIImage?, parent: UIView, xSizeFactor: CGFloat = 0.83, buttonTarget: Any, buttonAction: Selector, titleText: String, titleMaxWidthFactor: CGFloat, titleVerticalOffset: CGFloat) {
+        titleLabel = HeaderLabel(frame: CGRect.zero)
         titleUnderline = HorizontalLine()
-        super.init(image: image)
+        super.init(image: image, parent: parent, xSizeFactor: xSizeFactor, buttonTarget: buttonTarget, buttonAction: buttonAction)
+        
+        initializeTitleLabel(text: titleText, lineWidthLimit: titleMaxWidthFactor * self.frame.width, verticalOffset: titleVerticalOffset)
+        initializeTitleUnderline()
     }
     
-    func initializeTitleLabel(text: String, lineWidthLimit: CGFloat, verticalOffsetFromCenter offset: CGFloat){
-        titleLabel = CustomLabel(text: text, style: .header1, lineWidthLimit: lineWidthLimit)
+    func initializeTitleLabel(text: String, lineWidthLimit: CGFloat, verticalOffset offset: CGFloat){
+        titleLabel = HeaderLabel(text: text, size: .regular, color: .grey, lineWidthLimit: lineWidthLimit)
         titleLabel.centerInParent(self)
-        titleLabel.translateByParentProportion(xFactor: 0, yFactor: offset, parent: self)
+        titleLabel.translate(by: offset, axis: .vertical, parent: self, relative: true)
         self.addSubview(titleLabel)
     }
     
     func initializeTitleUnderline(){
         titleUnderline = HorizontalLine(parent: self, lengthFactor: 0.8)
-        titleUnderline.offsetFrom(titleLabel, by: 5, mode: .absolute, parent: self)
+        titleUnderline.offsetFrom(titleLabel, direction: .vertical, by: 5, relative: false, parent: self)
         self.layer.addSublayer(titleUnderline)
     }
 }

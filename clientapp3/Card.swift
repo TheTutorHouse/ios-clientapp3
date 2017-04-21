@@ -14,19 +14,22 @@ class Card: UIImageView {
         super.init(coder: aDecoder)
     }
     
-    override init(image: UIImage?){
-        super.init(image: image)
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
+    }
+    
+    init(image: UIImage?, parent: UIView, xSizeFactor: CGFloat = 0.83){
+        super.init(image: image)
+        self.isUserInteractionEnabled = true
+        self.center = parent.center
+        self.resizeProportionally(on: .horizontal, by: xSizeFactor, parent: parent, relative: true)
     }
     
     enum Direction {
         case top, bottom, left, right
     }
     
-    func slideIn(from origin: Direction = .bottom, to anchorObject: UIView, spacingFactor: CGFloat, delay: TimeInterval = 0, duration: TimeInterval = 0.5, parent: UIView, completionAction: ()?){
+    func slideIn(from origin: Direction = .bottom, to anchorObject: UIView, spacingFactor: CGFloat, delay: TimeInterval = 0, duration: TimeInterval = 0.5, parent: UIView, completionAction: (()->())?){
         self.centerInParent(parent)
         
         switch origin{
@@ -40,12 +43,26 @@ class Card: UIImageView {
             self.center.x += parent.frame.width
         }
         
+        self.show()
+        
         UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [], animations:{
-            self.repositionFromObject(anchorObject, parent: parent, xOffsetFactor: 0, yOffsetFactor: spacingFactor, mode: .graphical)
-        }, completion: {finished in completionAction})
+            self.repositionFrom(anchorObject, by: spacingFactor, axis: .vertical, parent: parent, relative: true)
+        }, completion: {finished in
+            if let completionAction = completionAction{
+                completionAction()
+            }
+        })
     }
     
-    func slideOut(to direction: Direction = .bottom, delay: TimeInterval = 0, duration: TimeInterval = 1.0, parent: UIView, completionAction: ()?){
+    func hide(){
+        self.alpha = 0
+    }
+    
+    func show(){
+        self.alpha = 1
+    }
+    
+    func slideOut(to direction: Direction, delay: TimeInterval = 0, duration: TimeInterval = 1.0, parent: UIView, completionAction: (()->())?){
         var yShift: CGFloat = 0
         var xShift: CGFloat = 0
         
@@ -60,12 +77,12 @@ class Card: UIImageView {
             xShift += parent.frame.width
         }
         
-        UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.4, options: [], animations: {
+        UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.2, options: [], animations: {
             self.transform = CGAffineTransform(translationX: xShift, y: yShift)
-        }, completion: {finished in completionAction})
-    }
-    
-    func setupCard(){
-        self.isUserInteractionEnabled = true
+        }, completion: {finished in
+            if let completionAction = completionAction{
+                completionAction()
+            }
+        })
     }
 }

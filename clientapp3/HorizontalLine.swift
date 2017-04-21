@@ -14,31 +14,15 @@ class HorizontalLine: CAShapeLayer{
         super.init(coder: aDecoder)
     }
     
-    enum Section{
-        case left, right
-    }
-    
-    init(parent: UIView, verticalOffsetFactorFromCenter offsetFactor: CGFloat = 0, lengthFactor: CGFloat, lineWidth: CGFloat = 1.0, color: UIColor = CustomColor.red, partialSection: Section? = nil){
+    init(parent: UIView, verticalOffsetFactorFromCenter offsetFactor: CGFloat = 0, lengthFactor: CGFloat, lineWidth: CGFloat = 1.0, color: UIColor = CustomColor.red){
         super.init()
         
         let length = parent.frame.width * lengthFactor
         let leftX = (parent.frame.width/2) - (length/2)
         let rightX = (parent.frame.width/2) + (length/2)
         let yVal = (parent.frame.height/2) + (offsetFactor * parent.frame.height)
-        
-        var startPoint = CGPoint(x: leftX, y: yVal)
-        var endPoint = CGPoint(x: rightX, y: yVal)
-        
-        if let partialSection = partialSection{
-            switch partialSection{
-            case .left:
-                startPoint = CGPoint(x: (parent.frame.width/2), y: yVal)
-                endPoint = CGPoint(x: leftX, y: yVal)
-            case .right:
-                startPoint = CGPoint(x: (parent.frame.width/2), y: yVal)
-                endPoint = CGPoint(x: rightX, y: yVal)
-            }
-        }
+        let startPoint = CGPoint(x: leftX, y: yVal)
+        let endPoint = CGPoint(x: rightX, y: yVal)
 
         let pathDrawer = UIBezierPath()
         pathDrawer.move(to: startPoint)
@@ -55,21 +39,7 @@ class HorizontalLine: CAShapeLayer{
         case vertical
     }
     
-    enum TransformMode{
-        case relative, absolute
-    }
-    
-    func animate(duration: CFTimeInterval, delay: CFTimeInterval, completionAction: ()?){
-        let pathAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        pathAnimation.duration = duration
-        pathAnimation.beginTime = CACurrentMediaTime() + delay
-        pathAnimation.fromValue = 0
-        pathAnimation.toValue = 1.0
-        pathAnimation.timingFunction = CAMediaTimingFunction.init(controlPoints: 0.65, 0.00, 0.35, 1)
-        self.add(pathAnimation, forKey: nil)
-    }
-    
-    func offsetFrom(_ object: UIView, direction axis: Axis = .vertical, by offset: CGFloat, mode: TransformMode, parent: UIView){
+    func offsetFrom(_ object: UIView, direction axis: Axis = .vertical, by offset: CGFloat, relative: Bool, parent: UIView){
         var maxParentBound: CGFloat
         var maxObjectBound: CGFloat
         var maxSelfBound: CGFloat
@@ -84,10 +54,10 @@ class HorizontalLine: CAShapeLayer{
         }
         
         var shiftAmount: CGFloat
-        switch mode{
-        case .relative:
+        switch relative{
+        case true:
             shiftAmount = offset * maxParentBound
-        case .absolute:
+        case false:
             shiftAmount = offset
         }
         
@@ -101,14 +71,6 @@ class HorizontalLine: CAShapeLayer{
                 self.position = CGPoint(x: self.position.x, y: (targetPosition - maxParentBound/2) - totalSpacing)
             }
         }
-    }
-    
-    func hide(){
-        self.opacity = 0
-    }
-    
-    func show(){
-        self.opacity = 1
     }
     
     override init() {

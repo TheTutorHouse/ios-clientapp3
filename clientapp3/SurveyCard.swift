@@ -26,19 +26,29 @@ class SurveyCard: Card{
         super.init(frame: frame)
     }
     
-    override init(image: UIImage?){
+    init(image: UIImage?, parent: UIView, xSizeFactor: CGFloat = 0.83, buttonTarget: Any, buttonAction: Selector){
         nextButton = CustomButton(frame: CGRect.zero)
-        super.init(image: image)
+        super.init(image: image, parent: parent, xSizeFactor: xSizeFactor)
+        
+        initializeNextButton(target: buttonTarget, action: buttonAction)
     }
     
-    func initializeNextButton(buttonTarget: Any, buttonSelector: Selector){
-        nextButton = CustomButton.init(activeImage: #imageLiteral(resourceName: "NextButton-Medium"), highlightedImage: #imageLiteral(resourceName: "NextButtonHighlighted-Medium"), parent: self, target: buttonTarget, action: buttonSelector, inactiveImage: #imageLiteral(resourceName: "NextButtonInactive-Medium"))
+    private func initializeNextButton(target: Any, action: Selector){
+        nextButton = CustomButton.init(activeImage: #imageLiteral(resourceName: "NextButton-Medium"), highlightedImage: #imageLiteral(resourceName: "NextButtonHighlighted-Medium"), parent: self, target: target, action: action, inactiveImage: #imageLiteral(resourceName: "NextButtonInactive-Medium"))
         nextButton.centerInParent(self)
-        nextButton.center.y = self.frame.height - (nextButton.frame.height/2) - 57.5
+        nextButton.shiftFrom(position: self.frame.height, by: -0.1, axis: .vertical, parent: self, relative: true)
         self.addSubview(nextButton)
+        
+        
     }
     
-    func slideInSurveyObject(object: UIView, from origin: Direction = .right, delay: TimeInterval = 0, duration: TimeInterval = 0.5, parent: UIView, completionAction: ()?){
+    func hideSurveyObjects(_ objects: [UIView]){
+        for object in objects{
+            object.alpha = 0
+        }
+    }
+    
+    func slideInSurveyObject(object: UIView, from origin: Direction = .right, delay: TimeInterval = 0, duration: TimeInterval = 0.5, parent: UIView, completionAction: (()->())?){
         let objectOriginalPosition = object.center
         
         switch origin{
@@ -52,8 +62,39 @@ class SurveyCard: Card{
             object.center.x += parent.frame.width
         }
         
+        object.alpha = 1
+        
         UIView.animate(withDuration: duration, delay: delay, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: [], animations: {
             object.center = objectOriginalPosition
-        }, completion: {finished in completionAction})
+        }, completion: {finished in
+            if let completionAction = completionAction{
+                completionAction()
+            }
+        })
+    }
+    
+    func easeInSurveyObject(object: UIView, from origin: Direction = .right, delay: TimeInterval = 0, duration: TimeInterval = 0.5, parent: UIView, completionAction: (()->())?){
+        let objectOriginalPosition = object.center
+        
+        switch origin{
+        case .top:
+            object.center.y -= parent.frame.height
+        case .bottom:
+            object.center.y += parent.frame.height
+        case .left:
+            object.center.x -= parent.frame.width
+        case .right:
+            object.center.x += parent.frame.width
+        }
+        
+        object.alpha = 1
+        
+        UIView.animate(withDuration: duration, delay: delay, options: .curveEaseInOut, animations: {
+            object.center = objectOriginalPosition
+        }, completion:{finished in
+            if let completionAction = completionAction{
+                completionAction()
+            }
+        })
     }
 }

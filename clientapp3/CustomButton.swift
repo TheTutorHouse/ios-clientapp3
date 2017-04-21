@@ -14,7 +14,7 @@ class CustomButton: UIButton{
         super.init(coder: aDecoder)
     }
     
-    init(activeImage: UIImage, highlightedImage: UIImage?, parent: UIView, target undefinedTarget: Any, action: Selector,inactiveImage: UIImage? = nil){
+    init(activeImage: UIImage, highlightedImage: UIImage?, parent: UIView, target ambiguousTarget: Any, action: Selector,inactiveImage: UIImage? = nil){
         super.init(frame: CGRect.zero)
         super.setImage(activeImage, for: .normal)
         super.setImage(highlightedImage, for: .highlighted)
@@ -26,10 +26,10 @@ class CustomButton: UIButton{
         super.sizeToFit()
         self.clipsToBounds = false
         
-        if let target = undefinedTarget as? UIView{
+        if let target = ambiguousTarget as? UIView{
             self.addTarget(target, action: action, for: .touchUpInside)
         }
-        else if let target = undefinedTarget as? UIViewController{
+        else if let target = ambiguousTarget as? UIViewController{
             self.addTarget(target, action: action, for: .touchUpInside)
         }
     }
@@ -39,11 +39,23 @@ class CustomButton: UIButton{
         self.alpha = 0
     }
     
-    func show(delay: TimeInterval){
+    func disable(){
+        self.isEnabled = false
+    }
+    
+    func enable(){
+        self.isEnabled = true
+    }
+    
+    func show(){
         self.isHidden = false
-        UIView.animate(withDuration: 0.4, delay: delay, options: .curveEaseInOut, animations: {
-            self.alpha = 1
-        }, completion: nil)
+        self.alpha = 1
+    }
+    
+    func animate(duration: TimeInterval, delay: TimeInterval, uponComplete completionAction: ()?){
+        UIView.animate(withDuration: duration, delay: delay, options: .curveEaseInOut, animations: {
+            self.show()
+        }, completion: {finished in completionAction})
     }
     
     override init(frame: CGRect) {

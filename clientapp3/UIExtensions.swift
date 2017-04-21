@@ -20,91 +20,92 @@ extension UIView{
         case graphical, positional
     }
     
-    func translateByParentProportion(xFactor: CGFloat, yFactor: CGFloat, parent: UIView, mode: TransformMode = .positional){
-        let xShiftValue = xFactor * parent.frame.width
-        let yShiftValue = yFactor * parent.frame.height
-        
-        absoluteTranslate(xShift: xShiftValue, yShift: yShiftValue, parent: parent, mode: mode)
+    public enum Axis{
+        case vertical, horizontal
     }
     
-    func absoluteTranslate(xShift: CGFloat, yShift: CGFloat, parent: UIView, mode: TransformMode = .positional){
+    func translate(by amount: CGFloat, axis: Axis, parent: UIView, relative: Bool, mode: TransformMode = .positional){
+        var parentMaxBound: CGFloat
+        switch axis{
+        case .horizontal:
+            parentMaxBound = parent.frame.width
+        case .vertical:
+            parentMaxBound = parent.frame.height
+        }
+        
+        var shift: CGFloat
+        switch relative {
+        case true:
+            shift = parentMaxBound * amount
+        case false:
+            shift = amount
+        }
+        
         switch mode{
         case .positional:
-            self.center.x += xShift
-            self.center.y += yShift
+            switch axis{
+            case .horizontal:
+                self.center.x += shift
+            case .vertical:
+                self.center.y += shift
+            }
         case .graphical:
-            self.transform = CGAffineTransform.init(translationX: xShift, y: yShift)
+            switch axis{
+            case .horizontal:
+                self.transform = CGAffineTransform(translationX: shift, y: 0)
+            case .vertical:
+                self.transform = CGAffineTransform(translationX: 0, y: shift)
+            }
         }
     }
     
-    func repositionFromObject(_ object: UIView, parent: UIView, xOffsetFactor: CGFloat?, yOffsetFactor: CGFloat?, mode: TransformMode = .positional){
-        if let xOffsetFactor = xOffsetFactor{
+    func repositionFrom(_ object: UIView, by amount: CGFloat, axis: Axis, parent: UIView, relative: Bool,  mode: TransformMode = .positional){
+        switch axis{
+        case .horizontal:
             self.center.x = object.center.x
-            if xOffsetFactor != 0{
-                if xOffsetFactor > 0{
+            if amount != 0{
+                if amount > 0{
                     self.center.x += (self.frame.width/2) + (object.frame.width/2)
                 }
-                else{
+                else if amount < 0{
                     self.center.x -= (self.frame.width/2) + (object.frame.width/2)
                 }
             }
-        }
-        if let yOffsetFactor = yOffsetFactor{
+        case .vertical:
             self.center.y = object.center.y
-            if yOffsetFactor != 0{
-                if yOffsetFactor > 0{
+            if amount != 0{
+                if amount > 0{
                     self.center.y += (self.frame.height/2) + (object.frame.height/2)
                 }
-                else{
+                else if amount < 0{
                     self.center.y -= (self.frame.height/2) + (object.frame.height/2)
                 }
             }
         }
-        self.translateByParentProportion(xFactor: xOffsetFactor ?? 0, yFactor: yOffsetFactor ?? 0, parent: parent, mode: mode)
+        self.translate(by: amount, axis: axis, parent: parent, relative: relative, mode: mode)
     }
     
-    func absoluteRepositionFromObject(_ object: UIView, parent: UIView, xOffset: CGFloat?, yOffset: CGFloat?, mode: TransformMode = .positional){
-        if let xOffsetFactor = xOffset{
-            self.center.x = object.center.x
-            if xOffsetFactor != 0{
-                if xOffsetFactor > 0{
-                    self.center.x += (self.frame.width/2) + (object.frame.width/2)
-                }
-                else{
-                    self.center.x -= (self.frame.width/2) + (object.frame.width/2)
-                }
-            }
-        }
-        if let yOffsetFactor = yOffset{
-            self.center.y = object.center.y
-            if yOffsetFactor != 0{
-                if yOffsetFactor > 0{
-                    self.center.y += (self.frame.height/2) + (object.frame.height/2)
-                }
-                else{
-                    self.center.y -= (self.frame.height/2) + (object.frame.height/2)
-                }
-            }
-        }
-        self.absoluteTranslate(xShift: xOffset ?? 0, yShift: yOffset ?? 0, parent: parent, mode: mode)
-    }
-    
-    public enum Dimension{
-        case width, height
-    }
-    
-    func resizeProportionallyBy(_ dimension: Dimension, parent: UIView, byFactor sizeFactor: CGFloat, mode: TransformMode = .positional){
+    func resizeProportionally(on axis: Axis, by amount: CGFloat, parent: UIView, relative: Bool, mode: TransformMode = .positional){
         let dimensionRatio: CGFloat = self.frame.height/self.frame.width
         
         var newWidth: CGFloat
         var newHeight: CGFloat
-        
-        switch dimension{
-        case .width:
-            newWidth = sizeFactor * parent.frame.width
+        switch axis{
+        case .horizontal:
+            switch relative{
+            case true:
+                newWidth = amount * parent.frame.width
+            case false:
+                newWidth = amount
+            }
             newHeight = dimensionRatio * newWidth
-        case .height:
-            newHeight = sizeFactor * parent.frame.height
+        case .vertical:
+            switch relative{
+            case true:
+                newHeight = amount * parent.frame.height
+            case false:
+                newHeight = amount
+            }
             newWidth = (1/dimensionRatio) * newHeight
         }
     
@@ -116,25 +117,44 @@ extension UIView{
         }
     }
     
-    func relativeShiftFromEdge(x: CGFloat?, y: CGFloat?, byFactor factor: CGFloat, parent: UIView){
-        if let x = x{
-            let spacing = abs(self.frame.width/2)
-            if factor > 0 {
-                self.center.x = x + spacing + (factor * parent.frame.width)
-            }
-            else if factor < 0 {
-                self.center.x = x - spacing + (factor * parent.frame.width)
-            }
-        }
-        if let y = y{
+    func shiftFrom(position: CGFloat, by amount: CGFloat, axis: Axis, parent: UIView, relative: Bool){
+        switch axis{
+        case .vertical:
             let spacing = abs(self.frame.height/2)
-            if factor > 0{
-                self.center.y = y + spacing + (factor * parent.frame.height)
+            if amount > 0{
+                switch relative{
+                case true:
+                    self.center.y = position + spacing + (amount * parent.frame.height)
+                case false:
+                    self.center.y = position + spacing + amount
+                }
             }
-            else if factor < 0 {
-                self.center.y = y - spacing + (factor * parent.frame.height)
+            else if amount < 0{
+                switch relative{
+                case true:
+                    self.center.y = position - spacing + (amount * parent.frame.height)
+                case false:
+                    self.center.y = position - spacing + amount
+                }
+            }
+        case .horizontal:
+            let spacing = abs(self.frame.width/2)
+            if amount > 0{
+                switch relative{
+                case true:
+                    self.center.y = position + spacing + (amount * parent.frame.width)
+                case false:
+                    self.center.y = position + spacing + amount
+                }
+            }
+            else if amount < 0{
+                switch relative{
+                case true:
+                    self.center.y = position - spacing + (amount * parent.frame.width)
+                case false:
+                    self.center.y = position - spacing + amount
+                }
             }
         }
     }
-    
 }

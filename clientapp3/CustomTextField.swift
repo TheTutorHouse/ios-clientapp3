@@ -17,50 +17,55 @@ class CustomTextField: UITextField{
         super.encode(with: aCoder)
     }
     
-    enum Style{
-        case `default`
-        case customBorders
-    }
-    
     override init(frame: CGRect){
         super.init(frame: frame)
     }
     
-    init(parent: UIView, widthFactor: CGFloat, style: Style = .default, delegate: UITextFieldDelegate, placeHolder: String? = nil, enableAutocorrect: Bool = false) {
+    enum BorderType{
+        case rounded, custom
+    }
+    
+    enum ColorScheme{
+        case variation1, variation2
+    }
+    
+    init(parent: UIView, widthFactor: CGFloat, heightMultiplier: CGFloat = 1, borderType: BorderType = .rounded, colorScheme: ColorScheme, delegate: UITextFieldDelegate, placeHolder: String? = nil) {
+        
         let textFieldWidth = parent.frame.width * widthFactor
+        let textFieldHeight = (37.5 * heightMultiplier)
         let centerX = (parent.frame.width/2)
         let centerY = (parent.frame.height/2)
-        let textFieldFrame = CGRect.init(x: centerX - textFieldWidth/2, y: centerY - (37.5/2), width: textFieldWidth, height: 37.5)
+        let textFieldFrame = CGRect.init(x: centerX - textFieldWidth/2, y: centerY - (textFieldHeight/2), width: textFieldWidth, height: 37.5)
         super.init(frame: textFieldFrame)
         
         self.delegate = delegate
-        if enableAutocorrect == true{
-            self.autocorrectionType = .yes
-        }
-        else{
-            self.autocorrectionType = .no
-        }
         self.borderStyle = .roundedRect
         self.keyboardType = .default
         self.returnKeyType = .done
         self.clearButtonMode = .whileEditing
         self.contentVerticalAlignment = .center
+        self.placeholder = placeHolder
         
-        initializeContentValues(style: style, placeHolder: placeHolder)
+        initializeBorder(borderType: borderType)
+        initializeColorScheme(colorScheme: colorScheme)
     }
     
-    func initializeContentValues(style: Style, placeHolder: String?){
-        self.placeholder = placeHolder
-        switch style{
-        case .customBorders:
+    func initializeBorder(borderType: BorderType){
+        switch borderType{
+        case .custom:
             self.layer.borderWidth = 1
-            fallthrough
-            
-        case .default:
-            self.backgroundColor = CustomColor.textFieldGrey
-            self.layer.borderColor = CustomColor.textFieldGrey2.cgColor
-            self.font = UIFont(name: "AvenirNext-Regular", size: CustomFontSize.textField)
-            self.textColor = CustomFontColor.bodyGrey1
+        case .rounded:
+            break
+        }
+    }
+    
+    func initializeColorScheme(colorScheme: ColorScheme){
+        switch colorScheme{
+        case .variation1:
+            self.layer.borderColor = RGBColor(r: 151, g: 151, b: 151).cgColor
+            self.backgroundColor = RGBColor(r: 228, g: 228, b: 228)
+        case .variation2:
+            break
         }
     }
 }

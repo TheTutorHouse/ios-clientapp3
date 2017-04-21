@@ -10,49 +10,44 @@ import UIKit
 
 class CustomLabel: UILabel{
     
-    
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    convenience init(text: String, fontSize: CGFloat, fontWeight: String, fontColor: UIColor, lineWidthLimit: CGFloat? = nil) {
-        if let font = UIFont(name: "AvenirNext-" + fontWeight, size: fontSize){
-            self.init(text: text, font: font, fontColor: fontColor, lineWidthLimit: lineWidthLimit)
-        }
-        else{
-            self.init(frame: CGRect.zero)
-        }
-    }
-    
-    init(text: String, font: UIFont, fontColor: UIColor, lineWidthLimit: CGFloat? = nil){
+    init(text: String, font: UIFont?, color: UIColor, lineWidthLimit: CGFloat? = nil){
         super.init(frame: CGRect.zero)
-        super.text = text
-        super.font = font
-        super.textColor = fontColor
-        
+        self.text = text
+        self.font = font
+        self.textColor = color
         if let maxWidth = lineWidthLimit{
             super.numberOfLines = 0
             super.lineBreakMode = .byWordWrapping
             super.frame.size.width = maxWidth
         }
-        
         sizeToFit()
     }
     
-    convenience init(text: String, style: FontStyle, lineWidthLimit: CGFloat? = nil) {
-        if let packagedFont = constructFont(style){
-            let font = packagedFont["font"] as! UIFont
-            let color = packagedFont["color"] as! UIColor
-            self.init(text: text, font: font, fontColor: color, lineWidthLimit: lineWidthLimit)
+    func translateOrigin(by amount: CGFloat, axis: UIView.Axis, parent: UIView, relative: Bool, mode: UIView.TransformMode = .positional) {
+        var absoluteAmount: CGFloat
+        switch axis{
+        case .horizontal:
+            switch relative{
+            case true:
+                absoluteAmount = parent.frame.width * amount
+            case false:
+                absoluteAmount = amount
+            }
+            absoluteAmount += self.frame.width/2
+        case .vertical:
+            switch relative{
+            case true:
+                absoluteAmount = parent.frame.height * amount
+            case false:
+                absoluteAmount = amount
+            }
+            absoluteAmount += self.frame.height/2
         }
-        else{
-            self.init(frame: CGRect.zero)
-        }
-    }
-    
-    func shiftOriginFromCenter(byFactor offsetFactor: CGFloat, parent: UIView){
-        self.frame.origin.x = parent.frame.width/2 + (offsetFactor * parent.frame.width)
+        super.translate(by: absoluteAmount, axis: axis, parent: parent, relative: false, mode: mode)
     }
     
     override init(frame: CGRect) {
