@@ -26,7 +26,7 @@ class SurveyCard1Divider: UIImageView{
     }
     
     func animate(delay: TimeInterval){
-        UIView.animate(withDuration: 0.4, delay: delay, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: delay, options: .curveEaseInOut, animations: {
             self.show()
         }, completion: nil)
     }

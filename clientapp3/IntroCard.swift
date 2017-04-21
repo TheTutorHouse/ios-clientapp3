@@ -64,7 +64,8 @@ class IntroCard: Card{
     
     func animate(parent: UIView, anchorObject: UIView){
         beginButton.hide()
-        self.slideIn(to: anchorObject, parent: parent, completionAction: beginButton.animate)
+        self.slideIn(to: anchorObject, parent: parent, completionAction: nil)
+        beginButton.animate(delay: 0.15)
     }
     
     func slideIn(to anchorObject: UIView, parent: UIView, completionAction: (()->())?){

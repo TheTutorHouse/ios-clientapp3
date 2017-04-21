@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
+class SurveyCard1: SurveyCardWithTitle{
     var nameLabel: SurveyCard1NameLabel
     var nameField: SurveyCard1NameField
     var emailLabel: SurveyCard1EmailLabel
@@ -50,7 +50,7 @@ class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
         super.init(frame: frame)
     }
     
-    init(parent: UIView, nextButtonTarget: Any, nextButtonAction: Selector) {
+    init(parent: UIView, nextButtonTarget: Any, nextButtonAction: Selector, textFieldDelegate: UITextFieldDelegate) {
         nameLabel = SurveyCard1NameLabel(frame: CGRect.zero)
         nameField = SurveyCard1NameField(frame: CGRect.zero)
         emailLabel = SurveyCard1EmailLabel(frame: CGRect.zero)
@@ -58,25 +58,24 @@ class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
         gradeLabel = SurveyCard1GradeLabel(frame: CGRect.zero)
         gradeButtons = [SurveyCard1GradeButton]()
         divider = SurveyCard1Divider(frame: CGRect.zero)
-        super.init(image: #imageLiteral(resourceName: "SurveyCard1-Medium"), parent: parent, xSizeFactor: 0.83, buttonTarget: nextButtonTarget,  buttonAction: nextButtonAction, titleText: "So, who are you?", titleMaxWidthFactor: (0.78), titleVerticalOffset: -0.4)
-        initializeContents()
+        super.init(image: #imageLiteral(resourceName: "SurveyCard1-Medium"), parent: parent, xSizeFactor: 0.83, buttonTarget: nextButtonTarget,  buttonAction: nextButtonAction, buttonTag: 1, titleText: "So, who are you?", titleMaxWidthFactor: (0.78), titleVerticalOffset: -0.4)
+        initializeContents(textFieldDelegate: textFieldDelegate)
         self.hide()
         parent.addSubview(self)
     }
     
-    func initializeContents(){
+    func initializeContents(textFieldDelegate: UITextFieldDelegate){
         titleLabel.translateOrigin(by: -0.39, axis: .horizontal, parent: self, relative: true)
         nameLabel = SurveyCard1NameLabel(parent: self)
-        nameField = SurveyCard1NameField(parent: self, nameLabel: nameLabel)
+        nameField = SurveyCard1NameField(parent: self, nameLabel: nameLabel, delegate: textFieldDelegate)
         emailLabel = SurveyCard1EmailLabel(parent: self)
-        emailField = SurveyCard1EmailField(parent: self, emailLabel: emailLabel)
+        emailField = SurveyCard1EmailField(parent: self, emailLabel: emailLabel, delegate: textFieldDelegate)
         gradeLabel = SurveyCard1GradeLabel(parent: self)
         for grade in 9...12{
             let gradeButton = SurveyCard1GradeButton(parent: self, grade: grade, gradeLabel: gradeLabel, target: self, action: #selector(onGradeButtonClick(_:)))
             gradeButtons.append(gradeButton)
         }
         divider = SurveyCard1Divider(parent: self, nextButton: self.nextButton)
-        nextButton.tag = 1
         
         hideSurveyObjects([nameLabel, nameField, emailLabel, emailField, gradeLabel, divider])
         hideSurveyObjects(gradeButtons)
@@ -84,22 +83,23 @@ class SurveyCard1: SurveyCardWithTitle, UITextFieldDelegate{
     
     func animate(parent: UIView, anchorObject: UIView){
         nextButton.hide()
-        self.slideIn(to: anchorObject, parent: parent, uponCompletion: animateContents)
+        self.slideIn(to: anchorObject, parent: parent, uponCompletion: nil)
+        animateContents()
     }
     
     func animateContents(){
         let formElements: [UIView] = [nameLabel, nameField, emailLabel, emailField, gradeLabel]
         for arrayID in 0...(formElements.count - 1){
-            easeInSurveyObject(object: formElements[arrayID], delay: ((0.1 * TimeInterval(arrayID))), duration: 0.5)
+            easeInSurveyObject(object: formElements[arrayID], delay: (0.05 + 0.075 * TimeInterval(arrayID)), duration: 0.4)
         }
         
         for arrayID in 0...(gradeButtons.count - 1){
-            slideInSurveyObject(object: gradeButtons[arrayID], from: .bottom, delay: (0.6 + (0.05 * TimeInterval(arrayID))), duration: 0.45)
+            slideInSurveyObject(object: gradeButtons[arrayID], from: .bottom, delay: (0.5 + (0.04 * TimeInterval(arrayID))), duration: 0.45)
         }
         
-        divider.animate(delay: 0.8)
+        divider.animate(delay: 0.7)
         nextButton.isHidden = false
-        easeInSurveyObject(object: nextButton, delay: 0.7, duration: 0.6)
+        easeInSurveyObject(object: nextButton, delay: 0.55, duration: 0.6)
     }
     
     func slideInFormElement(element: UIView, delay: TimeInterval, duration: TimeInterval){

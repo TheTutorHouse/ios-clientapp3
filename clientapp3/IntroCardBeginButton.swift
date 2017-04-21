@@ -24,7 +24,7 @@ class IntroCardBeginButton: CustomButton{
         parent.addSubview(self)
     }
     
-    func animate() {
-        super.animate(duration: 0.4, delay: 0, uponComplete: nil)
+    func animate(delay: TimeInterval) {
+        super.animate(duration: 0.4, delay: delay, uponComplete: nil)
     }
 }

@@ -26,20 +26,19 @@ class SurveyCard: Card{
         super.init(frame: frame)
     }
     
-    init(image: UIImage?, parent: UIView, xSizeFactor: CGFloat = 0.83, buttonTarget: Any, buttonAction: Selector){
+    init(image: UIImage?, parent: UIView, xSizeFactor: CGFloat = 0.83, buttonTarget: Any, buttonAction: Selector, buttonTag: Int){
         nextButton = CustomButton(frame: CGRect.zero)
         super.init(image: image, parent: parent, xSizeFactor: xSizeFactor)
         
-        initializeNextButton(target: buttonTarget, action: buttonAction)
+        initializeNextButton(target: buttonTarget, action: buttonAction, tag: buttonTag)
     }
     
-    private func initializeNextButton(target: Any, action: Selector){
+    private func initializeNextButton(target: Any, action: Selector, tag: Int){
         nextButton = CustomButton.init(activeImage: #imageLiteral(resourceName: "NextButton-Medium"), highlightedImage: #imageLiteral(resourceName: "NextButtonHighlighted-Medium"), parent: self, target: target, action: action, inactiveImage: #imageLiteral(resourceName: "NextButtonInactive-Medium"))
         nextButton.centerInParent(self)
         nextButton.shiftFrom(position: self.frame.height, by: -0.1, axis: .vertical, parent: self, relative: true)
+        nextButton.tag = tag
         self.addSubview(nextButton)
-        
-        
     }
     
     func hideSurveyObjects(_ objects: [UIView]){

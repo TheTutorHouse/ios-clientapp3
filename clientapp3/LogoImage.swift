@@ -19,7 +19,7 @@ class LogoImage: UIImageView{
     
     enum Version: CGFloat{
         case large = 0.23
-        case small = 0.22
+        case small = 0.1575
     }
     
     init(parent: UIView, version: Version) {
@@ -29,5 +29,21 @@ class LogoImage: UIImageView{
     
     func resize(to version: Version, parent: UIView){
         self.resizeProportionally(on: .horizontal, by: version.rawValue, parent: parent, relative: true)
+    }
+    
+    func reposition(version: Version, parent: UIView){
+        switch version{
+        case .large:
+            self.translate(by: 0.023, axis: .vertical, parent: parent, relative: true)
+        case .small:
+            self.translate(by: -0.023, axis: .vertical, parent: parent, relative: true)
+        }
+    }
+    
+    func animate(version: Version, delay: TimeInterval, parent: UIView){
+        UIView.animate(withDuration: 0.75, delay: delay, options: .curveEaseInOut, animations: {
+            self.resize(to: version, parent: parent)
+            self.reposition(version: version, parent: parent)
+        }, completion: nil)
     }
 }
