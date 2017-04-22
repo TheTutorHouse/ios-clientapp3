@@ -23,13 +23,26 @@ class Card: UIImageView {
         self.isUserInteractionEnabled = true
         self.center = parent.center
         self.resizeProportionally(on: .horizontal, by: xSizeFactor, parent: parent, relative: true)
+        prepareForAnimations()
     }
     
     enum Direction {
         case top, bottom, left, right
     }
     
-    func slideIn(from origin: Direction = .bottom, to anchorObject: UIView, spacingFactor: CGFloat, delay: TimeInterval = 0, duration: TimeInterval = 0.5, parent: UIView, completionAction: (()->())?){
+    func hide(){
+        self.alpha = 0
+    }
+    
+    func show(){
+        self.alpha = 1
+    }
+    
+    func prepareForAnimations(){
+        self.hide()
+    }
+    
+    internal func slideIn(from origin: Direction = .bottom, to anchorObject: UIView, spacingFactor: CGFloat, delay: TimeInterval = 0, duration: TimeInterval = 0.5, parent: UIView, completionAction: (()->())?){
         self.centerInParent(parent)
         
         switch origin{
@@ -54,15 +67,7 @@ class Card: UIImageView {
         })
     }
     
-    func hide(){
-        self.alpha = 0
-    }
-    
-    func show(){
-        self.alpha = 1
-    }
-    
-    func slideOut(to direction: Direction, delay: TimeInterval = 0, duration: TimeInterval = 1.0, parent: UIView, completionAction: (()->())?){
+    internal func slideOut(to direction: Direction, delay: TimeInterval = 0.25, duration: TimeInterval = 1.0, parent: UIView, completionAction: (()->())?){
         var yShift: CGFloat = 0
         var xShift: CGFloat = 0
         

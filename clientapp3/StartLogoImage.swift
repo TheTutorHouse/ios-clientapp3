@@ -27,7 +27,7 @@ class StartLogoImage: LogoImage{
         parent.addSubview(self)
     }
     
-    func shiftUp(parent: UIView, logoLabel: UIView, uponComplete completionAction: @escaping () -> ()){
+    func shiftUp(parent: UIView, logoLabel: UIView, uponCompletion completionAction: @escaping () -> ()){
         UIView.animate(withDuration: 0.7, delay: 0.7, options: [.curveEaseInOut], animations: {
             
             //Shift along with label

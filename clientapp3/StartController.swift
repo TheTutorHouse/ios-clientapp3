@@ -24,22 +24,26 @@ class StartController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        shiftUpLogo()
+        self.animateIn()
     }
     
-    func shiftUpLogo(){
+    func animateIn(){
         logoLabel.shiftUp(parent: view)
-        logoImage.shiftUp(parent: view, logoLabel: logoLabel, uponComplete: slideInCard)
+        logoImage.shiftUp(parent: view, logoLabel: logoLabel, uponCompletion: showCard)
     }
     
-    func slideInCard(){
+    func showCard(){
         introCard.animate(parent: view, anchorObject: logoLabel)
+    }
+    
+    func animateOut(){
+        introCard.slideOut(parent: view)
+        logoLabel.fadeOut(uponCompletion: loadNextController)
     }
     
     func onButtonClick(){
         //saveProgramState()
-        introCard.slideOut(parent: view)
-        logoLabel.fadeOut(uponCompletion: loadNextController)
+        animateOut()
     }
     
     func loadNextController(){

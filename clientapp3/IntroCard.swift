@@ -49,12 +49,11 @@ class IntroCard: Card{
         self.beginButton = IntroCardBeginButton(frame: CGRect.zero)
         super.init(image: #imageLiteral(resourceName: "IntroCard-Medium"), parent: parent, xSizeFactor: 0.83)
         
-        initializeContent(buttonTarget: buttonTarget, buttonAction: buttonAction)
-        self.hide()
+        initializeContents(buttonTarget: buttonTarget, buttonAction: buttonAction)
         parent.addSubview(self)
     }
     
-    func initializeContent(buttonTarget target: Any, buttonAction action: Selector){
+    func initializeContents(buttonTarget target: Any, buttonAction action: Selector){
         self.titleLabel = IntroCardTitleLabel(parent: self)
         self.titleUnderline = IntroCardTitleUnderline(parent: self, cardTitleLabel: titleLabel)
         self.headerLabel = IntroCardHeaderLabel(parent: self)
@@ -62,17 +61,21 @@ class IntroCard: Card{
         self.beginButton = IntroCardBeginButton(parent: self, target: target, action: action)
     }
     
-    func animate(parent: UIView, anchorObject: UIView){
+    override func prepareForAnimations(){
+        super.prepareForAnimations()
         beginButton.hide()
+    }
+    
+    func animate(parent: UIView, anchorObject: UIView){
         self.slideIn(to: anchorObject, parent: parent, completionAction: nil)
-        beginButton.animate(delay: 0.15)
+        beginButton.fadeIn(delay: 0.15)
     }
     
     func slideIn(to anchorObject: UIView, parent: UIView, completionAction: (()->())?){
-        super.slideIn(from: .bottom, to: anchorObject, spacingFactor: 0.03, duration: 0.5, parent: parent, completionAction: completionAction)
+        super.slideIn(from: .bottom, to: anchorObject, spacingFactor: 0.03, parent: parent, completionAction: completionAction)
     }
     
     func slideOut(parent: UIView) {
-        super.slideOut(to: .bottom, delay: 0.25, parent: parent, completionAction: nil)
+        super.slideOut(to: .bottom, parent: parent, completionAction: nil)
     }
 }

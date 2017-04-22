@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3112555B1EAA83DE002B40FD /* ControllerWithKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3112555A1EAA83DE002B40FD /* ControllerWithKeyboard.swift */; };
 		31ABB3831EAA56E2009BEF9C /* SurveyCard2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ABB3821EAA56E2009BEF9C /* SurveyCard2.swift */; };
 		31B91A271EA8FF3F0042D8A1 /* LogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A261EA8FF3F0042D8A1 /* LogoImage.swift */; };
 		31B91A2B1EA9013C0042D8A1 /* StartLogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A2A1EA9013C0042D8A1 /* StartLogoImage.swift */; };
@@ -24,7 +25,6 @@
 		31B91A511EA93F1F0042D8A1 /* SurveyCard1EmailLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A501EA93F1F0042D8A1 /* SurveyCard1EmailLabel.swift */; };
 		31B91A531EA93F270042D8A1 /* SurveyCard1EmailField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A521EA93F270042D8A1 /* SurveyCard1EmailField.swift */; };
 		31C33B541EA3044700C3E5F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B531EA3044700C3E5F4 /* AppDelegate.swift */; };
-		31C33B561EA3044700C3E5F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B551EA3044700C3E5F4 /* ViewController.swift */; };
 		31C33B591EA3044700C3E5F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C33B571EA3044700C3E5F4 /* Main.storyboard */; };
 		31C33B5B1EA3044700C3E5F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31C33B5A1EA3044700C3E5F4 /* Assets.xcassets */; };
 		31C33B5E1EA3044700C3E5F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31C33B5C1EA3044700C3E5F4 /* LaunchScreen.storyboard */; };
@@ -44,10 +44,10 @@
 		31F6B76D1EA952CB0050D689 /* SurveyCard1GradeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F6B76C1EA952CB0050D689 /* SurveyCard1GradeLabel.swift */; };
 		31F6B76F1EA953FA0050D689 /* SurveyCard1GradeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F6B76E1EA953FA0050D689 /* SurveyCard1GradeButton.swift */; };
 		31F6B7711EA95E8E0050D689 /* SurveyCard1Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F6B7701EA95E8E0050D689 /* SurveyCard1Divider.swift */; };
-		31F6B7751EAA47AF0050D689 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F6B7741EAA47AF0050D689 /* Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3112555A1EAA83DE002B40FD /* ControllerWithKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerWithKeyboard.swift; sourceTree = "<group>"; };
 		31ABB3821EAA56E2009BEF9C /* SurveyCard2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard2.swift; sourceTree = "<group>"; };
 		31B91A261EA8FF3F0042D8A1 /* LogoImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoImage.swift; sourceTree = "<group>"; };
 		31B91A2A1EA9013C0042D8A1 /* StartLogoImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartLogoImage.swift; sourceTree = "<group>"; };
@@ -66,7 +66,6 @@
 		31B91A521EA93F270042D8A1 /* SurveyCard1EmailField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard1EmailField.swift; sourceTree = "<group>"; };
 		31C33B501EA3044700C3E5F4 /* clientapp3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = clientapp3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31C33B531EA3044700C3E5F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		31C33B551EA3044700C3E5F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		31C33B581EA3044700C3E5F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		31C33B5A1EA3044700C3E5F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31C33B5D1EA3044700C3E5F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -87,7 +86,6 @@
 		31F6B76C1EA952CB0050D689 /* SurveyCard1GradeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard1GradeLabel.swift; sourceTree = "<group>"; };
 		31F6B76E1EA953FA0050D689 /* SurveyCard1GradeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard1GradeButton.swift; sourceTree = "<group>"; };
 		31F6B7701EA95E8E0050D689 /* SurveyCard1Divider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard1Divider.swift; sourceTree = "<group>"; };
-		31F6B7741EAA47AF0050D689 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,10 +268,8 @@
 			children = (
 				31B91A281EA901110042D8A1 /* Controllers */,
 				31C33B531EA3044700C3E5F4 /* AppDelegate.swift */,
-				31C33B551EA3044700C3E5F4 /* ViewController.swift */,
 				31C33B761EA4F71E00C3E5F4 /* UIElements */,
 				31D748761EA5122B00924748 /* UIExtensions.swift */,
-				31F6B7741EAA47AF0050D689 /* Utility.swift */,
 				31C33B571EA3044700C3E5F4 /* Main.storyboard */,
 				31C33B5A1EA3044700C3E5F4 /* Assets.xcassets */,
 				31C33B5C1EA3044700C3E5F4 /* LaunchScreen.storyboard */,
@@ -310,6 +306,7 @@
 				31D7487A1EA53BA400924748 /* CustomButton.swift */,
 				31D7487C1EA5471F00924748 /* HorizontalLine.swift */,
 				31D748851EA68B8000924748 /* CustomTextField.swift */,
+				3112555A1EAA83DE002B40FD /* ControllerWithKeyboard.swift */,
 			);
 			name = "Custom Base Elements";
 			sourceTree = "<group>";
@@ -410,18 +407,17 @@
 				31F6B7711EA95E8E0050D689 /* SurveyCard1Divider.swift in Sources */,
 				31D7487F1EA58DCE00924748 /* SurveyCard.swift in Sources */,
 				31D748891EA6F9DF00924748 /* CustomColor.swift in Sources */,
-				31C33B561EA3044700C3E5F4 /* ViewController.swift in Sources */,
 				31B91A3D1EA929BF0042D8A1 /* IntroCardTitleUnderline.swift in Sources */,
 				31D748771EA5122B00924748 /* UIExtensions.swift in Sources */,
 				31B91A531EA93F270042D8A1 /* SurveyCard1EmailField.swift in Sources */,
 				31ABB3831EAA56E2009BEF9C /* SurveyCard2.swift in Sources */,
 				31F6B76F1EA953FA0050D689 /* SurveyCard1GradeButton.swift in Sources */,
+				3112555B1EAA83DE002B40FD /* ControllerWithKeyboard.swift in Sources */,
 				31D748861EA68B8000924748 /* CustomTextField.swift in Sources */,
 				31B91A391EA91AFC0042D8A1 /* HeaderLabel.swift in Sources */,
 				31C33B541EA3044700C3E5F4 /* AppDelegate.swift in Sources */,
 				31D748811EA59F9400924748 /* SurveyCardWithTitle.swift in Sources */,
 				31B91A441EA92E230042D8A1 /* IntroCardBeginButton.swift in Sources */,
-				31F6B7751EAA47AF0050D689 /* Utility.swift in Sources */,
 				31D7487D1EA5471F00924748 /* HorizontalLine.swift in Sources */,
 				31B91A511EA93F1F0042D8A1 /* SurveyCard1EmailLabel.swift in Sources */,
 				31B91A2F1EA905E90042D8A1 /* StartLogoLabel.swift in Sources */,

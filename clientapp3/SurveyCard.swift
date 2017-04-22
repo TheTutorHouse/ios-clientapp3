@@ -33,7 +33,7 @@ class SurveyCard: Card{
         initializeNextButton(target: buttonTarget, action: buttonAction, tag: buttonTag)
     }
     
-    private func initializeNextButton(target: Any, action: Selector, tag: Int){
+    func initializeNextButton(target: Any, action: Selector, tag: Int){
         nextButton = CustomButton.init(activeImage: #imageLiteral(resourceName: "NextButton-Medium"), highlightedImage: #imageLiteral(resourceName: "NextButtonHighlighted-Medium"), parent: self, target: target, action: action, inactiveImage: #imageLiteral(resourceName: "NextButtonInactive-Medium"))
         nextButton.centerInParent(self)
         nextButton.shiftFrom(position: self.frame.height, by: -0.1, axis: .vertical, parent: self, relative: true)
@@ -47,7 +47,11 @@ class SurveyCard: Card{
         }
     }
     
-    func slideInSurveyObject(object: UIView, from origin: Direction = .right, delay: TimeInterval = 0, duration: TimeInterval = 0.5, parent: UIView, completionAction: (()->())?){
+    override func prepareForAnimations() {
+        nextButton.hide()
+    }
+    
+    func bounceInSurveyObject(object: UIView, from origin: Direction = .right, delay: TimeInterval = 0, duration: TimeInterval = 0.5, parent: UIView, completionAction: (()->())?){
         let objectOriginalPosition = object.center
         
         switch origin{

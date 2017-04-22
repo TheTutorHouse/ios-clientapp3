@@ -52,7 +52,7 @@ class CustomButton: UIButton{
         self.alpha = 1
     }
     
-    func animate(duration: TimeInterval, delay: TimeInterval, uponComplete completionAction: ()?){
+    func fadeIn(duration: TimeInterval, delay: TimeInterval, uponComplete completionAction: ()?){
         UIView.animate(withDuration: duration, delay: delay, options: .curveEaseInOut, animations: {
             self.show()
         }, completion: {finished in completionAction})
