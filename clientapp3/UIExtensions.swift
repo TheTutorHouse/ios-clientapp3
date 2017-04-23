@@ -142,17 +142,17 @@ extension UIView{
             if amount > 0{
                 switch relative{
                 case true:
-                    self.center.y = position + spacing + (amount * parent.frame.width)
+                    self.center.x = position + spacing + (amount * parent.frame.width)
                 case false:
-                    self.center.y = position + spacing + amount
+                    self.center.x = position + spacing + amount
                 }
             }
             else if amount < 0{
                 switch relative{
                 case true:
-                    self.center.y = position - spacing + (amount * parent.frame.width)
+                    self.center.x = position - spacing + (amount * parent.frame.width)
                 case false:
-                    self.center.y = position - spacing + amount
+                    self.center.x = position - spacing + amount
                 }
             }
         }

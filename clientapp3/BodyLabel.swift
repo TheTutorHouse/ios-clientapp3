@@ -31,8 +31,8 @@ class BodyLabel: CustomLabel{
         self.textColor = getColor(color)
     }
     
-    func getColor(_ headerColor: BodyColor) -> UIColor{
-        switch headerColor{
+    func getColor(_ bodyColor: BodyColor) -> UIColor{
+        switch bodyColor{
         case .grey:
             return RGBColor(r: 106, g: 106, b: 106)
         }

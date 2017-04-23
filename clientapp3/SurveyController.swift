@@ -15,10 +15,9 @@ class SurveyController: ControllerWithKeyboard {
     var surveyCard2: SurveyCard2!
     var surveyCard3: SurveyCard3!
     var currentCard: Card!
-    @IBOutlet weak var contentView: UIView!
     
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(contentView: contentView, textFieldSequence: [surveyCard1.nameField, surveyCard1.emailField], nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        super.init(textFieldSequence: [surveyCard1.nameField, surveyCard1.emailField], nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,7 +27,7 @@ class SurveyController: ControllerWithKeyboard {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialize()
-        initializeContents()
+        surveyCard1 = SurveyCard1(parent: contentView, nextButtonTarget: self, nextButtonAction: #selector(onNextButtonClick(_:)), textFieldDelegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,26 +43,57 @@ class SurveyController: ControllerWithKeyboard {
         contentView.frame.size = view.frame.size
     }
     
-    func initializeContents(){
-        surveyCard1 = SurveyCard1(parent: contentView, nextButtonTarget: self, nextButtonAction: #selector(onNextButtonClick(_:)), textFieldDelegate: self)
-        surveyCard2 = SurveyCard2(parent: contentView, nextbuttonTarget: self, nextbuttonAction: #selector(onNextButtonClick(_:)))
-    }
-    
     func showCard(_ identifier: Int){
         switch identifier{
         case 0:
             currentCard.bounceOut(to: .bottom, parent: contentView, completionAction: nil)
-            surveyCard1.animate(parent: view, anchorObject: logoImage)
+            surveyCard1 = SurveyCard1(parent: contentView, nextButtonTarget: self, nextButtonAction: #selector(onNextButtonClick(_:)), textFieldDelegate: self)
+            logoImage.animate(version: .large, delay: 0.1, parent: contentView, uponCompletion: {
+                self.surveyCard1.animate(parent: self.contentView, anchorObject: self.logoImage)
+            })
+            currentCard = surveyCard1
         case 1:
             currentCard.bounceOut(to: .bottom, parent: contentView, completionAction: nil)
-            logoImage.animate(version: .small, delay: 0.2, parent: contentView, uponCompletion: {
-                self.surveyCard2.animate(parent: self.contentView, anchorObject: self.logoImage)
-            })
+            surveyCard2 = SurveyCard2(parent: contentView, nextButtonTarget: self, nextButtonAction: #selector(onNextButtonClick(_:)))
+            
+            if currentCard != surveyCard3{
+                logoImage.animate(version: .small, delay: 0.2, parent: contentView, uponCompletion: {
+                    self.surveyCard2.animate(parent: self.contentView, anchorObject: self.logoImage, delay: 0)
+                })
+            }
+            else{
+                self.surveyCard2.animate(parent: self.contentView, anchorObject: self.logoImage, delay: 0.7)
+            }
+            
             currentCard = surveyCard2
         case 2:
             currentCard.bounceOut(to: .bottom, parent: contentView, completionAction: nil)
+            surveyCard3 = SurveyCard3(parent: contentView, nextButtonTarget: self, nextButtonAction: #selector(onNextButtonClick(_:)))
+            surveyCard3.animate(parent: contentView, anchorObject: logoImage)
+            currentCard = surveyCard3
         default:
             fatalError("SurveyController attempted to show an undefined card.")
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == surveyCard1.nameField || textField == surveyCard1.emailField{
+            if surveyCard1.contentsAreValid(textField: textField) == true{
+                if textField == surveyCard1.nameField{
+                    surveyCard1.nameIsValid = true
+                }
+                else if textField == surveyCard1.emailField{
+                    surveyCard1.emailIsValid = true
+                }
+            }
+            else{
+                if textField == surveyCard1.nameField{
+                    surveyCard1.nameIsValid = false
+                }
+                else if textField == surveyCard1.emailField{
+                    surveyCard1.emailIsValid = false
+                }
+            }
         }
     }
     

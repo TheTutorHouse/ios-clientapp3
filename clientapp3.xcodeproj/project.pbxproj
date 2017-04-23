@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3112555B1EAA83DE002B40FD /* ControllerWithKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3112555A1EAA83DE002B40FD /* ControllerWithKeyboard.swift */; };
+		31A469551EACEC16006769F0 /* SurveyCard2LearnerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A469541EACEC16006769F0 /* SurveyCard2LearnerButton.swift */; };
 		31ABB3831EAA56E2009BEF9C /* SurveyCard2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ABB3821EAA56E2009BEF9C /* SurveyCard2.swift */; };
 		31B91A271EA8FF3F0042D8A1 /* LogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A261EA8FF3F0042D8A1 /* LogoImage.swift */; };
 		31B91A2B1EA9013C0042D8A1 /* StartLogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B91A2A1EA9013C0042D8A1 /* StartLogoImage.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		3112555A1EAA83DE002B40FD /* ControllerWithKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerWithKeyboard.swift; sourceTree = "<group>"; };
+		31A469541EACEC16006769F0 /* SurveyCard2LearnerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard2LearnerButton.swift; sourceTree = "<group>"; };
 		31ABB3821EAA56E2009BEF9C /* SurveyCard2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard2.swift; sourceTree = "<group>"; };
 		31B91A261EA8FF3F0042D8A1 /* LogoImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoImage.swift; sourceTree = "<group>"; };
 		31B91A2A1EA9013C0042D8A1 /* StartLogoImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartLogoImage.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		31ABB3811EAA56D5009BEF9C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				31A469541EACEC16006769F0 /* SurveyCard2LearnerButton.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -198,7 +201,6 @@
 			children = (
 				31C33B721EA4863D00C3E5F4 /* SurveyController.swift */,
 				31B91A471EA938860042D8A1 /* Cards */,
-				31D472F11EABAE7F0049BD51 /* Survey Card 3 */,
 			);
 			name = "Survey Controller";
 			sourceTree = "<group>";
@@ -208,6 +210,7 @@
 			children = (
 				31B91A481EA939310042D8A1 /* Survey Card 1 */,
 				31ABB3801EAA5697009BEF9C /* Survey Card 2 */,
+				31D472F11EABAE7F0049BD51 /* Survey Card 3 */,
 			);
 			name = Cards;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				31B91A531EA93F270042D8A1 /* SurveyCard1EmailField.swift in Sources */,
 				31ABB3831EAA56E2009BEF9C /* SurveyCard2.swift in Sources */,
 				31F6B76F1EA953FA0050D689 /* SurveyCard1GradeButton.swift in Sources */,
+				31A469551EACEC16006769F0 /* SurveyCard2LearnerButton.swift in Sources */,
 				3112555B1EAA83DE002B40FD /* ControllerWithKeyboard.swift in Sources */,
 				31D748861EA68B8000924748 /* CustomTextField.swift in Sources */,
 				31B91A391EA91AFC0042D8A1 /* HeaderLabel.swift in Sources */,

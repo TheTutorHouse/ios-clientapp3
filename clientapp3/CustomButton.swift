@@ -40,11 +40,15 @@ class CustomButton: UIButton{
     }
     
     func disable(){
-        self.isEnabled = false
+        UIView.transition(with: self, duration: 0.35, options: .transitionCrossDissolve, animations: {
+            self.isEnabled = false
+        }, completion: nil)
     }
     
     func enable(){
-        self.isEnabled = true
+        UIView.transition(with: self, duration: 0.35, options: .transitionCrossDissolve, animations: {
+            self.isEnabled = true
+        }, completion: nil)
     }
     
     func show(){

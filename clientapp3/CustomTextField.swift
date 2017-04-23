@@ -45,6 +45,8 @@ class CustomTextField: UITextField{
         self.clearButtonMode = .whileEditing
         self.contentVerticalAlignment = .center
         self.placeholder = placeHolder
+        self.textColor = RGBColor(r: 106, g: 106, b: 106)
+        self.backgroundColor = RGBColor(r: 225, g: 225, b: 225)
         
         initializeBorder(borderType: borderType)
         initializeColorScheme(colorScheme: colorScheme)

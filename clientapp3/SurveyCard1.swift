@@ -17,6 +17,22 @@ class SurveyCard1: SurveyCardWithTitle{
     var gradeButtons: [SurveyCard1GradeButton]
     var divider: SurveyCard1Divider
     
+    var emailIsValid: Bool = false{
+        didSet{
+            self.checkNextButtonValidity()
+        }
+    }
+    var nameIsValid: Bool = false{
+        didSet{
+            self.checkNextButtonValidity()
+        }
+    }
+    var gradeIsValid: Bool = false{
+        didSet{
+            self.checkNextButtonValidity()
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         nameLabel = aDecoder.decodeObject(forKey: "SurveyCard1NameLabel") as! SurveyCard1NameLabel
         nameField = aDecoder.decodeObject(forKey: "SurveyCard1NameField") as! SurveyCard1NameField
@@ -61,7 +77,9 @@ class SurveyCard1: SurveyCardWithTitle{
         
         super.init(image: #imageLiteral(resourceName: "SurveyCard1-Medium"), parent: parent, buttonTarget: nextButtonTarget,  buttonAction: nextButtonAction, buttonTag: 1, titleText: "So, who are you?", titleMaxWidthFactor: (0.78), titleVerticalOffset: -0.4)
         initializeContents(textFieldDelegate: textFieldDelegate)
+        nextButton.isEnabled = false
         parent.addSubview(self)
+        self.prepareForAnimations()
     }
     
     func initializeContents(textFieldDelegate: UITextFieldDelegate){
@@ -82,6 +100,7 @@ class SurveyCard1: SurveyCardWithTitle{
         for button in gradeButtons{
             if button == sender{
                 button.assignState(state: .active, for: button.tag)
+                self.gradeIsValid = true
             }
             else{
                 button.assignState(state: .inactive, for: button.tag)
@@ -89,8 +108,49 @@ class SurveyCard1: SurveyCardWithTitle{
         }
     }
     
+    func contentsAreValid(textField: UITextField) -> Bool{
+        var valid: Bool
+        
+        switch textField{
+        case nameField:
+            if textField.text == ""{
+                valid = false
+            }
+            else{
+                valid = true
+            }
+        case emailField:
+            let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+            let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+            valid = emailTest.evaluate(with: textField.text)
+        default:
+            fatalError("SurveyCard1 tried to verify the contents of an invalid textfield.")
+        }
+        
+        switch valid{
+        case true:
+            UIView.animate(withDuration: 0.45, animations: {
+                textField.backgroundColor = RGBColor(r: 201, g: 238, b: 164)
+            })
+        case false:
+            UIView.animate(withDuration: 0.45, animations: {
+                textField.backgroundColor = RGBColor(r: 244, g: 160, b: 160)
+            })
+        }
+        return valid
+    }
+    
+    func checkNextButtonValidity(){
+        if self.gradeIsValid && self.emailIsValid && nameIsValid{
+            nextButton.enable()
+        }
+        else{
+            nextButton.disable()
+        }
+    }
+    
     override func prepareForAnimations(){
-        hideSurveyObjects([nameLabel, nameField, emailLabel, emailField, gradeLabel, divider])
+        self.hideSurveyObjects([nameLabel, nameField, emailLabel, emailField, gradeLabel, divider])
         hideSurveyObjects(gradeButtons)
         super.prepareForAnimations()
     }
@@ -101,16 +161,16 @@ class SurveyCard1: SurveyCardWithTitle{
         
         let formElements: [UIView] = [nameLabel, nameField, emailLabel, emailField, gradeLabel]
         for arrayID in 0...(formElements.count - 1){
-            easeInSurveyObject(object: formElements[arrayID], delay: (0.05 + 0.075 * TimeInterval(arrayID)), duration: 0.4)
+            easeInSurveyObject(object: formElements[arrayID], delay: (0.05 + 0.06 * TimeInterval(arrayID)), duration: 0.4)
         }
         
         for arrayID in 0...(gradeButtons.count - 1){
-            bounceInSurveyObject(object: gradeButtons[arrayID], from: .bottom, delay: (0.5 + (0.04 * TimeInterval(arrayID))), duration: 0.45)
+            bounceInSurveyObject(object: gradeButtons[arrayID], from: .bottom, delay: (0.45 + (0.04 * TimeInterval(arrayID))), duration: 0.45)
         }
         
-        divider.animate(delay: 0.7)
+        divider.animate(delay: 0.6)
         nextButton.show()
-        easeInSurveyObject(object: nextButton, delay: 0.47, duration: 0.6)
+        easeInSurveyObject(object: nextButton, delay: 0.47, duration: 0.5)
     }
     
     final func bounceInSurveyObject(object: UIView, from origin: Card.Direction, delay: TimeInterval, duration: TimeInterval) {

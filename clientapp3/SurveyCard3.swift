@@ -17,17 +17,26 @@ class SurveyCard3: SurveyCardWithTitle{
         super.init(frame: frame)
     }
     
-    init(parent: UIView, buttonTarget: Any, buttonAction: Selector, titleText: String, titleMaxWidthFactor: CGFloat, titleVerticalOffset: CGFloat) {
-        super.init(image: #imageLiteral(resourceName: "SurveyCard2-Medium"), parent: parent, buttonTarget: buttonTarget, buttonAction: buttonAction, buttonTag: 3, titleText: "Pick your subjects!", titleMaxWidthFactor: (0.78 * parent.frame.width), titleVerticalOffset: -0.4)
+    init(parent: UIView, nextButtonTarget: Any, nextButtonAction: Selector) {
+        super.init(image: #imageLiteral(resourceName: "SurveyCard2-Medium"), parent: parent, buttonTarget: nextButtonTarget, buttonAction: nextButtonAction, buttonTag: 3, titleText: "Pick your subjects!", titleMaxWidthFactor: 0.78, titleVerticalOffset: -0.4)
+        nextButton.isEnabled = false
+        parent.addSubview(self)
+        self.prepareForAnimations()
     }
     
     override func prepareForAnimations() {
         super.prepareForAnimations()
     }
     
+    func animate(parent: UIView, anchorObject: UIView){
+        super.animate()
+        self.bounceIn(to: anchorObject, parent: parent, completionAction: nil)
+        nextButton.fadeIn(duration: 0.5, delay: 0.4, uponComplete: nil)
+        backButton.fadeIn(duration: 0.7, delay: 0.5, uponComplete: nil)
+    }
+    
     final func bounceIn(to anchorObject: UIView, parent: UIView, completionAction: (() -> ())?) {
-        super.bounceIn(from: .bottom, to: anchorObject, spacingFactor: 0.03, duration: 0.5, parent: parent, completionAction: completionAction)
-        print("done")
+        super.bounceIn(from: .bottom, to: anchorObject, spacingFactor: 0.05, delay: 0.7, duration: 0.5, parent: parent, completionAction: completionAction)
     }
     
     final func bounceOut(parent: UIView, completionAction: (() -> ())?) {

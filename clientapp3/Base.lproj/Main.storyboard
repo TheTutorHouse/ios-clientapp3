@@ -53,7 +53,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="contentView" destination="KNt-Rw-P27" id="4Lc-bg-QSJ"/>
+                        <outlet property="contentView" destination="KNt-Rw-P27" id="qKw-Yb-fjW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DiI-U8-BVU" userLabel="First Responder" sceneMemberID="firstResponder"/>

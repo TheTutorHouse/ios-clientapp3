@@ -22,7 +22,7 @@ class StartLogoLabel: LogoLabel{
     
     func shiftUp(parent: UIView){
         UIView.animate(withDuration: 0.7, delay: 0.70, options: [.curveEaseInOut], animations: {
-            self.translate(by: -0.255, axis: .vertical, parent: parent, relative: true, mode: .positional)
+            self.translate(by: -0.250, axis: .vertical, parent: parent, relative: true, mode: .positional)
         }, completion: nil)
     }
     

@@ -22,7 +22,6 @@ class Card: UIImageView {
         super.init(image: image)
         self.center = parent.center
         self.resizeProportionally(on: .horizontal, by: xSizeFactor, parent: parent, relative: true)
-        prepareForAnimations()
     }
     
     enum Direction {
