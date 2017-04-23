@@ -51,6 +51,7 @@ class IntroCard: Card{
         
         initializeContents(buttonTarget: buttonTarget, buttonAction: buttonAction)
         parent.addSubview(self)
+        self.prepareForAnimations()
     }
     
     func initializeContents(buttonTarget target: Any, buttonAction action: Selector){
@@ -67,15 +68,16 @@ class IntroCard: Card{
     }
     
     func animate(parent: UIView, anchorObject: UIView){
-        self.slideIn(to: anchorObject, parent: parent, completionAction: nil)
+        super.animate()
+        self.bounceIn(to: anchorObject, parent: parent, completionAction: nil)
         beginButton.fadeIn(delay: 0.15)
     }
     
-    func slideIn(to anchorObject: UIView, parent: UIView, completionAction: (()->())?){
-        super.slideIn(from: .bottom, to: anchorObject, spacingFactor: 0.03, parent: parent, completionAction: completionAction)
+    func bounceIn(to anchorObject: UIView, parent: UIView, completionAction: (()->())?){
+        super.bounceIn(from: .bottom, to: anchorObject, spacingFactor: 0.03, parent: parent, completionAction: completionAction)
     }
     
-    func slideOut(parent: UIView) {
-        super.slideOut(to: .bottom, parent: parent, completionAction: nil)
+    func bounceOut(parent: UIView) {
+        super.bounceOut(to: .bottom, parent: parent, completionAction: nil)
     }
 }

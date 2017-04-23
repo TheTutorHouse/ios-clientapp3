@@ -40,10 +40,14 @@ class LogoImage: UIImageView{
         }
     }
     
-    func animate(version: Version, delay: TimeInterval, parent: UIView){
+    func animate(version: Version, delay: TimeInterval, parent: UIView, uponCompletion completionAction: (()->())?){
         UIView.animate(withDuration: 0.75, delay: delay, options: .curveEaseInOut, animations: {
             self.resize(to: version, parent: parent)
             self.reposition(version: version, parent: parent)
-        }, completion: nil)
+        }, completion: { finished in
+            if let completionAction = completionAction{
+                completionAction()
+            }
+        })
     }
 }

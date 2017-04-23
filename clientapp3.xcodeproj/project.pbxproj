@@ -32,6 +32,7 @@
 		31C33B731EA4863D00C3E5F4 /* SurveyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B721EA4863D00C3E5F4 /* SurveyController.swift */; };
 		31C33B751EA4F71A00C3E5F4 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B741EA4F71A00C3E5F4 /* Card.swift */; };
 		31C33B7C1EA4FD7E00C3E5F4 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C33B7B1EA4FD7E00C3E5F4 /* CustomLabel.swift */; };
+		31D472F31EABAE960049BD51 /* SurveyCard3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D472F21EABAE960049BD51 /* SurveyCard3.swift */; };
 		31D748771EA5122B00924748 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D748761EA5122B00924748 /* UIExtensions.swift */; };
 		31D748791EA52CA700924748 /* IntroCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D748781EA52CA700924748 /* IntroCard.swift */; };
 		31D7487B1EA53BA400924748 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D7487A1EA53BA400924748 /* CustomButton.swift */; };
@@ -74,6 +75,7 @@
 		31C33B721EA4863D00C3E5F4 /* SurveyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyController.swift; sourceTree = "<group>"; };
 		31C33B741EA4F71A00C3E5F4 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		31C33B7B1EA4FD7E00C3E5F4 /* CustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		31D472F21EABAE960049BD51 /* SurveyCard3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard3.swift; sourceTree = "<group>"; };
 		31D748761EA5122B00924748 /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		31D748781EA52CA700924748 /* IntroCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = IntroCard.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		31D7487A1EA53BA400924748 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CustomButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -196,6 +198,7 @@
 			children = (
 				31C33B721EA4863D00C3E5F4 /* SurveyController.swift */,
 				31B91A471EA938860042D8A1 /* Cards */,
+				31D472F11EABAE7F0049BD51 /* Survey Card 3 */,
 			);
 			name = "Survey Controller";
 			sourceTree = "<group>";
@@ -311,6 +314,14 @@
 			name = "Custom Base Elements";
 			sourceTree = "<group>";
 		};
+		31D472F11EABAE7F0049BD51 /* Survey Card 3 */ = {
+			isa = PBXGroup;
+			children = (
+				31D472F21EABAE960049BD51 /* SurveyCard3.swift */,
+			);
+			name = "Survey Card 3";
+			sourceTree = "<group>";
+		};
 		31D748871EA6EAB700924748 /* Colors and Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +417,7 @@
 				31B91A341EA919130042D8A1 /* IntroCardTitleLabel.swift in Sources */,
 				31F6B7711EA95E8E0050D689 /* SurveyCard1Divider.swift in Sources */,
 				31D7487F1EA58DCE00924748 /* SurveyCard.swift in Sources */,
+				31D472F31EABAE960049BD51 /* SurveyCard3.swift in Sources */,
 				31D748891EA6F9DF00924748 /* CustomColor.swift in Sources */,
 				31B91A3D1EA929BF0042D8A1 /* IntroCardTitleUnderline.swift in Sources */,
 				31D748771EA5122B00924748 /* UIExtensions.swift in Sources */,

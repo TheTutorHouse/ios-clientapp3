@@ -59,7 +59,7 @@ class SurveyCard1: SurveyCardWithTitle{
         gradeButtons = [SurveyCard1GradeButton]()
         divider = SurveyCard1Divider(frame: CGRect.zero)
         
-        super.init(image: #imageLiteral(resourceName: "SurveyCard1-Medium"), parent: parent, xSizeFactor: 0.83, buttonTarget: nextButtonTarget,  buttonAction: nextButtonAction, buttonTag: 1, titleText: "So, who are you?", titleMaxWidthFactor: (0.78), titleVerticalOffset: -0.4)
+        super.init(image: #imageLiteral(resourceName: "SurveyCard1-Medium"), parent: parent, buttonTarget: nextButtonTarget,  buttonAction: nextButtonAction, buttonTag: 1, titleText: "So, who are you?", titleMaxWidthFactor: (0.78), titleVerticalOffset: -0.4)
         initializeContents(textFieldDelegate: textFieldDelegate)
         parent.addSubview(self)
     }
@@ -92,10 +92,12 @@ class SurveyCard1: SurveyCardWithTitle{
     override func prepareForAnimations(){
         hideSurveyObjects([nameLabel, nameField, emailLabel, emailField, gradeLabel, divider])
         hideSurveyObjects(gradeButtons)
+        super.prepareForAnimations()
     }
     
     func animate(parent: UIView, anchorObject: UIView){
-        self.slideIn(to: anchorObject, parent: parent, uponCompletion: nil)
+        super.animate()
+        self.bounceIn(to: anchorObject, parent: parent, uponCompletion: nil)
         
         let formElements: [UIView] = [nameLabel, nameField, emailLabel, emailField, gradeLabel]
         for arrayID in 0...(formElements.count - 1){
@@ -107,23 +109,23 @@ class SurveyCard1: SurveyCardWithTitle{
         }
         
         divider.animate(delay: 0.7)
-        nextButton.isHidden = false
-        easeInSurveyObject(object: nextButton, delay: 0.55, duration: 0.6)
+        nextButton.show()
+        easeInSurveyObject(object: nextButton, delay: 0.47, duration: 0.6)
     }
     
-    func bounceInSurveyObject(object: UIView, from origin: Card.Direction, delay: TimeInterval, duration: TimeInterval) {
+    final func bounceInSurveyObject(object: UIView, from origin: Card.Direction, delay: TimeInterval, duration: TimeInterval) {
         super.bounceInSurveyObject(object: object, from: origin, delay: delay, duration: delay, parent: self, completionAction: nil)
     }
     
-    func easeInSurveyObject(object: UIView, delay: TimeInterval, duration: TimeInterval) {
+    final func easeInSurveyObject(object: UIView, delay: TimeInterval, duration: TimeInterval) {
         super.easeInSurveyObject(object: object, from: .bottom, delay: delay, duration: duration, parent: self, completionAction: nil)
     }
     
-    func slideIn(to anchorObject: UIView, parent: UIView, uponCompletion completionAction: (()->())?) {
-        super.slideIn(from: .bottom, to: anchorObject, spacingFactor: 0.03, parent: parent, completionAction: completionAction)
+    final func bounceIn(to anchorObject: UIView, parent: UIView, uponCompletion completionAction: (()->())?) {
+        super.bounceIn(from: .bottom, to: anchorObject, spacingFactor: 0.03, parent: parent, completionAction: completionAction)
     }
     
-    func slideOut(parent: UIView, completionAction: (() -> ())?) {
-        super.slideOut(to: .bottom, parent: parent, completionAction: completionAction)
+    final func bounceOut(parent: UIView, completionAction: (() -> ())?) {
+        super.bounceOut(to: .bottom, parent: parent, completionAction: completionAction)
     }
 }

@@ -37,7 +37,7 @@ class StartController: UIViewController {
     }
     
     func animateOut(){
-        introCard.slideOut(parent: view)
+        introCard.bounceOut(parent: view)
         logoLabel.fadeOut(uponCompletion: loadNextController)
     }
     

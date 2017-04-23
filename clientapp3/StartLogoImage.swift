@@ -27,14 +27,16 @@ class StartLogoImage: LogoImage{
         parent.addSubview(self)
     }
     
-    func shiftUp(parent: UIView, logoLabel: UIView, uponCompletion completionAction: @escaping () -> ()){
+    func shiftUp(parent: UIView, logoLabel: UIView, uponCompletion completionAction: (() -> ())?){
         UIView.animate(withDuration: 0.7, delay: 0.7, options: [.curveEaseInOut], animations: {
             
             //Shift along with label
             self.repositionFrom(logoLabel, by: -0.0175, axis: .vertical, parent: parent, relative: true, mode: .positional)
             
         }, completion: { finished in
-            completionAction()
+            if let completionAction = completionAction{
+                completionAction()
+            }
         })
     }
 }

@@ -20,7 +20,6 @@ class Card: UIImageView {
     
     init(image: UIImage?, parent: UIView, xSizeFactor: CGFloat = 0.83){
         super.init(image: image)
-        self.isUserInteractionEnabled = true
         self.center = parent.center
         self.resizeProportionally(on: .horizontal, by: xSizeFactor, parent: parent, relative: true)
         prepareForAnimations()
@@ -39,10 +38,15 @@ class Card: UIImageView {
     }
     
     func prepareForAnimations(){
+        self.isUserInteractionEnabled = false
         self.hide()
     }
     
-    internal func slideIn(from origin: Direction = .bottom, to anchorObject: UIView, spacingFactor: CGFloat, delay: TimeInterval = 0, duration: TimeInterval = 0.5, parent: UIView, completionAction: (()->())?){
+    func animate(){
+        self.isUserInteractionEnabled = true
+    }
+    
+    func bounceIn(from origin: Direction = .bottom, to anchorObject: UIView, spacingFactor: CGFloat, delay: TimeInterval = 0, duration: TimeInterval = 0.5, parent: UIView, completionAction: (()->())?){
         self.centerInParent(parent)
         
         switch origin{
@@ -67,7 +71,7 @@ class Card: UIImageView {
         })
     }
     
-    internal func slideOut(to direction: Direction, delay: TimeInterval = 0.25, duration: TimeInterval = 1.0, parent: UIView, completionAction: (()->())?){
+    func bounceOut(to direction: Direction, delay: TimeInterval = 0.25, duration: TimeInterval = 1.0, parent: UIView, completionAction: (()->())?){
         var yShift: CGFloat = 0
         var xShift: CGFloat = 0
         

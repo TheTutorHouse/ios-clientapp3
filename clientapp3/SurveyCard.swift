@@ -29,7 +29,6 @@ class SurveyCard: Card{
     init(image: UIImage?, parent: UIView, xSizeFactor: CGFloat = 0.83, buttonTarget: Any, buttonAction: Selector, buttonTag: Int){
         nextButton = CustomButton(frame: CGRect.zero)
         super.init(image: image, parent: parent, xSizeFactor: xSizeFactor)
-        
         initializeNextButton(target: buttonTarget, action: buttonAction, tag: buttonTag)
     }
     
@@ -48,7 +47,8 @@ class SurveyCard: Card{
     }
     
     override func prepareForAnimations() {
-        nextButton.hide()
+        self.nextButton.hide()
+        super.prepareForAnimations()
     }
     
     func bounceInSurveyObject(object: UIView, from origin: Direction = .right, delay: TimeInterval = 0, duration: TimeInterval = 0.5, parent: UIView, completionAction: (()->())?){
