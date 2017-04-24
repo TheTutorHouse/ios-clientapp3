@@ -75,6 +75,17 @@ class SurveyCard1GradeButton: CustomButton{
         return normalImage
     }
     
+    func loadData() -> Bool{
+        let defaults = UserDefaults.standard
+        if self.tag == defaults.integer(forKey: "surveyCard1GradeButtonTag"){
+            self.assignState(state: .active, for: tag)
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    
     func setPosition(parent: UIView, grade: Int, gradeLabel: UIView){
         //Vertical position
         self.resizeProportionally(on: .horizontal, by: 0.1225, parent: parent, relative: true)

@@ -20,11 +20,21 @@ class StartController: UIViewController {
         logoLabel = StartLogoLabel(parent: view)
         logoImage = StartLogoImage(parent: view, logoLabel: logoLabel)
         introCard = IntroCard(parent: view, buttonTarget: self, buttonAction: #selector(onButtonClick))
+        checkForReset()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.animateIn()
+    }
+    
+    func checkForReset(){
+        let settings = UserDefaults.standard
+        let resetRequested = settings.bool(forKey: "settings-survey-data-reset-toggle")
+        if resetRequested == true{
+            let appDomain = Bundle.main.bundleIdentifier!
+            settings.removePersistentDomain(forName: appDomain)
+        }
     }
     
     func animateIn(){
@@ -42,8 +52,13 @@ class StartController: UIViewController {
     }
     
     func onButtonClick(){
-        //saveProgramState()
+        saveProgramState()
         animateOut()
+    }
+    
+    func saveProgramState(){
+        let defaults = UserDefaults.standard
+        defaults.set("started", forKey: "surveyProgress")
     }
     
     func loadNextController(){

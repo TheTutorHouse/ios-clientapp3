@@ -21,9 +21,8 @@ class SurveyCard2: SurveyCardWithTitle{
     
     init(parent: UIView, nextButtonTarget: Any, nextButtonAction: Selector) {
         super.init(image: #imageLiteral(resourceName: "SurveyCard2-Medium"), parent: parent, buttonTarget: nextButtonTarget, buttonAction: nextButtonAction, buttonTag: 2, titleText: "What kind of learner are you?", titleMaxWidthFactor: 0.78, titleVerticalOffset: -0.375)
-        
-        self.initializeContents()
         nextButton.isEnabled = false
+        self.initializeContents()
         parent.addSubview(self)
         self.prepareForAnimations()
     }
@@ -38,13 +37,21 @@ class SurveyCard2: SurveyCardWithTitle{
         learnerButtons.append(SurveyCard2LearnerButton.init(parent: self, learnerType: .visual, target: self, action: #selector(onLearnerButtonClick(_:))))
         learnerButtons.append(SurveyCard2LearnerButton.init(parent: self, learnerType: .auditory, target: self, action: #selector(onLearnerButtonClick(_:))))
         learnerButtons.append(SurveyCard2LearnerButton.init(parent: self, learnerType: .kinesthetic, target: self, action: #selector(onLearnerButtonClick(_:))))
+        
+        for button in learnerButtons{
+            if button.isChosen == true{
+                nextButton.isEnabled = true
+            }
+        }
     }
     
     func onLearnerButtonClick(_ sender: SurveyCard2LearnerButton){
+        let defaults = UserDefaults.standard
         for button in learnerButtons{
             if button == sender{
                 button.isChosen = true
                 button.popInIndicator(delay: 0.01)
+                defaults.set(button.tag, forKey: "surveyCard2LearnerButtonTag")
                 nextButton.enable()
             }
             else if button != sender && button.isChosen == true{

@@ -21,8 +21,16 @@ class SurveyCard1EmailField: CustomTextField{
         super.init(parent: parent, widthFactor: 0.8, heightMultiplier: 1, borderType: .rounded, colorScheme: .variation1, delegate: delegate, placeHolder: "jane@apple.ca")
         self.repositionFrom(emailLabel, by: 5, axis: .vertical, parent: parent, relative: false)
         self.autocapitalizationType = .none
+        self.keyboardType = .emailAddress
         self.autocorrectionType = .no
         self.returnKeyType = .done
         parent.addSubview(self)
+        loadData()
+    }
+    
+    func loadData(){
+        if let text = UserDefaults.standard.string(forKey: "surveyCard1EmailFieldText"){
+            self.text = text
+        }
     }
 }

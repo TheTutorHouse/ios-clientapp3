@@ -9,6 +9,9 @@
 import UIKit
 
 class SurveyCard1NameField: CustomTextField{
+    
+    let defaults = UserDefaults.standard
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -24,5 +27,12 @@ class SurveyCard1NameField: CustomTextField{
         self.autocorrectionType = .no
         self.returnKeyType = .next
         parent.addSubview(self)
+        loadData()
+    }
+    
+    func loadData(){
+        if let text = defaults.string(forKey: "surveyCard1NameFieldText"){
+            self.text = text
+        }
     }
 }

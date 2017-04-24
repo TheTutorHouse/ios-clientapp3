@@ -10,6 +10,7 @@ import UIKit
 
 class SurveyController: ControllerWithKeyboard {
     
+    let defaults = UserDefaults.standard
     var logoImage: LogoImage!
     var surveyCard1: SurveyCard1!
     var surveyCard2: SurveyCard2!
@@ -81,9 +82,11 @@ class SurveyController: ControllerWithKeyboard {
             if surveyCard1.contentsAreValid(textField: textField) == true{
                 if textField == surveyCard1.nameField{
                     surveyCard1.nameIsValid = true
+                    defaults.set(textField.text, forKey: "surveyCard1NameFieldText")
                 }
                 else if textField == surveyCard1.emailField{
                     surveyCard1.emailIsValid = true
+                    defaults.set(textField.text, forKey: "surveyCard1EmailFieldText")
                 }
             }
             else{

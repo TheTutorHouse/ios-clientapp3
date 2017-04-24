@@ -45,10 +45,12 @@ class SurveyCard2LearnerButton: CustomButton{
         
         super.init(activeImage: normalImage, highlightedImage: highlightedImage, parent: parent, target: target, action: action)
         self.resizeProportionally(on: .horizontal, by: 0.7, parent: parent, relative: true)
+        self.sizeToFit()
         self.initializeButtonTags(for: learnerType)
         self.setPosition(tag: self.tag, parent: parent)
         self.initializeIndicator()
         parent.addSubview(self)
+        loadData()
     }
     
     func initializeButtonTags(for learnerType: LearnerType){
@@ -62,12 +64,21 @@ class SurveyCard2LearnerButton: CustomButton{
         }
     }
     
+    func loadData(){
+        let defaults = UserDefaults.standard
+        let tag = defaults.integer(forKey: "surveyCard2LearnerButtonTag")
+        if self.tag == tag{
+            self.isChosen = true
+            self.popInIndicator(delay: 0)
+        }
+    }
+    
     private func initializeIndicator(){
         indicator = UIImageView(image: #imageLiteral(resourceName: "RoundLearnerButtonIndicator"))
-        indicator.sizeToFit()
         indicator.resizeProportionally(on: .horizontal, by: 0.01, parent: self, relative: true)
+        indicator.sizeToFit()
         indicator.centerInParent(self)
-        indicator.center.x = self.frame.width * 0.8697
+        indicator.center.x = self.frame.width/2 + (self.frame.width/2) * 0.742
         indicator.alpha = 0
         self.addSubview(indicator)
     }
@@ -83,7 +94,7 @@ class SurveyCard2LearnerButton: CustomButton{
     }
     
     func fadeOutIndicator(delay: TimeInterval){
-        UIView.animate(withDuration: 0.45, delay: delay, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: delay, options: .curveEaseInOut, animations: {
             self.indicator.alpha = 0
         }, completion: nil)
     }
@@ -91,6 +102,6 @@ class SurveyCard2LearnerButton: CustomButton{
     func setPosition(tag: Int, parent: UIView){
         let spacing: CGFloat = 0.1575
         self.centerInParent(parent)
-        self.translate(by: CGFloat(-1.8 + Double(tag)) * spacing, axis: .vertical, parent: parent, relative: true)
+        self.translate(by: CGFloat(-1.9 + Double(tag)) * spacing, axis: .vertical, parent: parent, relative: true)
     }
 }

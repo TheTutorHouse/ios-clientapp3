@@ -9,6 +9,8 @@
 import UIKit
 
 class SurveyCard1: SurveyCardWithTitle{
+    
+    let defaults = UserDefaults.standard
     var nameLabel: SurveyCard1NameLabel
     var nameField: SurveyCard1NameField
     var emailLabel: SurveyCard1EmailLabel
@@ -76,8 +78,8 @@ class SurveyCard1: SurveyCardWithTitle{
         divider = SurveyCard1Divider(frame: CGRect.zero)
         
         super.init(image: #imageLiteral(resourceName: "SurveyCard1-Medium"), parent: parent, buttonTarget: nextButtonTarget,  buttonAction: nextButtonAction, buttonTag: 1, titleText: "So, who are you?", titleMaxWidthFactor: (0.78), titleVerticalOffset: -0.4)
-        initializeContents(textFieldDelegate: textFieldDelegate)
         nextButton.isEnabled = false
+        initializeContents(textFieldDelegate: textFieldDelegate)
         parent.addSubview(self)
         self.prepareForAnimations()
     }
@@ -91,15 +93,31 @@ class SurveyCard1: SurveyCardWithTitle{
         gradeLabel = SurveyCard1GradeLabel(parent: self)
         for grade in 9...12{
             let gradeButton = SurveyCard1GradeButton(parent: self, grade: grade, gradeLabel: gradeLabel, target: self, action: #selector(onGradeButtonClick(_:)))
+            if gradeButton.loadData() == true{
+                self.gradeIsValid = true
+            }
             gradeButtons.append(gradeButton)
         }
         divider = SurveyCard1Divider(parent: self, nextButton: self.nextButton)
+        self.checkFieldContents()
+    }
+    
+    func checkFieldContents(){
+        if nameField.text != nil && nameField.text != ""{
+            let _ = contentsAreValid(textField: nameField)
+            self.nameIsValid = true
+        }
+        if emailField.text != nil && emailField.text != ""{
+            let _ = contentsAreValid(textField: emailField)
+            self.emailIsValid = true
+        }
     }
     
     func onGradeButtonClick(_ sender: SurveyCard1GradeButton!){
         for button in gradeButtons{
             if button == sender{
                 button.assignState(state: .active, for: button.tag)
+                defaults.set(sender.tag, forKey: "surveyCard1GradeButtonTag")
                 self.gradeIsValid = true
             }
             else{
@@ -141,7 +159,7 @@ class SurveyCard1: SurveyCardWithTitle{
     }
     
     func checkNextButtonValidity(){
-        if self.gradeIsValid && self.emailIsValid && nameIsValid{
+        if self.gradeIsValid && self.emailIsValid && self.nameIsValid{
             nextButton.enable()
         }
         else{

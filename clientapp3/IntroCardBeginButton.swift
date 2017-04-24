@@ -18,7 +18,20 @@ class IntroCardBeginButton: CustomButton{
     }
     
     init(parent: UIView, target: Any, action: Selector){
-        super.init(activeImage: #imageLiteral(resourceName: "BeginButton-Regular"), highlightedImage: #imageLiteral(resourceName: "BeginButtonHighlighted-Regular"), parent: parent, target: target, action: action)
+        let defaults = UserDefaults.standard
+        if let surveyProgress = defaults.object(forKey: "surveyProgress") as? String{
+            if surveyProgress == "started"{
+                super.init(activeImage: #imageLiteral(resourceName: "ContinueButton-Regular"), highlightedImage: #imageLiteral(resourceName: "ContinueButtonHighlighted-Regular"), parent: parent, target: target, action: action)
+            }
+            else{
+                super.init(activeImage: #imageLiteral(resourceName: "BeginButton-Regular"), highlightedImage: #imageLiteral(resourceName: "BeginButtonHighlighted-Regular"), parent: parent, target: target, action: action)
+            }
+        }
+        else{
+            super.init(activeImage: #imageLiteral(resourceName: "BeginButton-Regular"), highlightedImage: #imageLiteral(resourceName: "BeginButtonHighlighted-Regular"), parent: parent, target: target, action: action)
+        }
+        
+        
         self.centerInParent(parent)
         self.shiftFrom(position: parent.frame.height, by: -0.14, axis: .vertical, parent: parent, relative: true)
         parent.addSubview(self)
