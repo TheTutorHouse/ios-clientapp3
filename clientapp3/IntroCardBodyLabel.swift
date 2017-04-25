@@ -22,7 +22,15 @@ class IntroCardBodyLabel: BodyLabel{
         let lineWidthLimit: CGFloat = (0.78) * parent.frame.width
         super.init(text: text, size: .regular, color: .grey, lineWidthLimit: lineWidthLimit)
         self.centerInParent(parent)
-        self.repositionFrom(cardHeaderLabel, by: 10, axis: .vertical, parent: parent, relative: false)
+        
+        var amount: CGFloat{
+            switch Display.type{
+            case .iphone5: return 7.5
+            default: return 10
+            }
+        }
+        self.repositionFrom(cardHeaderLabel, by: amount, axis: .vertical, parent: parent, relative: false)
+        
         self.translateOrigin(by: -0.39, axis: .horizontal, parent: parent, relative: true)
         parent.addSubview(self)
     }

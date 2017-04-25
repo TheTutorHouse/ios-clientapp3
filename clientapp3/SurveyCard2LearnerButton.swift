@@ -78,7 +78,7 @@ class SurveyCard2LearnerButton: CustomButton{
         indicator.resizeProportionally(on: .horizontal, by: 0.01, parent: self, relative: true)
         indicator.sizeToFit()
         indicator.centerInParent(self)
-        indicator.center.x = self.frame.width/2 + (self.frame.width/2) * 0.742
+        indicator.center.x = self.frame.width/2 + (self.frame.width/2) * 0.7418
         indicator.alpha = 0
         self.addSubview(indicator)
     }

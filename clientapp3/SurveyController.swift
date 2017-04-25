@@ -29,6 +29,7 @@ class SurveyController: ControllerWithKeyboard {
         super.viewDidLoad()
         initialize()
         surveyCard1 = SurveyCard1(parent: contentView, nextButtonTarget: self, nextButtonAction: #selector(onNextButtonClick(_:)), textFieldDelegate: self)
+        textFieldSequence = [surveyCard1.nameField, surveyCard1.emailField]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +50,7 @@ class SurveyController: ControllerWithKeyboard {
         case 0:
             currentCard.bounceOut(to: .bottom, parent: contentView, completionAction: nil)
             surveyCard1 = SurveyCard1(parent: contentView, nextButtonTarget: self, nextButtonAction: #selector(onNextButtonClick(_:)), textFieldDelegate: self)
+            textFieldSequence = [surveyCard1.nameField, surveyCard1.emailField]
             logoImage.animate(version: .large, delay: 0.1, parent: contentView, uponCompletion: {
                 self.surveyCard1.animate(parent: self.contentView, anchorObject: self.logoImage)
             })

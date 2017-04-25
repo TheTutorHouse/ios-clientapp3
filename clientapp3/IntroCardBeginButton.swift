@@ -33,7 +33,13 @@ class IntroCardBeginButton: CustomButton{
         
         
         self.centerInParent(parent)
-        self.shiftFrom(position: parent.frame.height, by: -0.14, axis: .vertical, parent: parent, relative: true)
+        var amount: CGFloat{
+            switch Display.type{
+            case .iphone5: return -0.12
+            default: return -0.14
+            }
+        }
+        self.shiftFrom(position: parent.frame.height, by: amount, axis: .vertical, parent: parent, relative: true)
         parent.addSubview(self)
     }
     

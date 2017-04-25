@@ -21,8 +21,14 @@ class StartLogoLabel: LogoLabel{
     }
     
     func shiftUp(parent: UIView){
+        var amount: CGFloat{
+            switch Display.type{
+            case .iphone5: return -0.235
+            default: return -0.250
+            }
+        }
         UIView.animate(withDuration: 0.7, delay: 0.70, options: [.curveEaseInOut], animations: {
-            self.translate(by: -0.250, axis: .vertical, parent: parent, relative: true, mode: .positional)
+            self.translate(by: amount, axis: .vertical, parent: parent, relative: true, mode: .positional)
         }, completion: nil)
     }
     

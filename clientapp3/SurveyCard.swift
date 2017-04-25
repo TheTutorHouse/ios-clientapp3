@@ -30,7 +30,7 @@ class SurveyCard: Card{
         super.init(frame: frame)
     }
     
-    init(image: UIImage?, parent: UIView, xSizeFactor: CGFloat = 0.83, buttonTarget: Any, buttonAction: Selector, buttonTag: Int){
+    init(image: UIImage?, parent: UIView, xSizeFactor: CGFloat = Card.defaultXSizeFactor, buttonTarget: Any, buttonAction: Selector, buttonTag: Int){
         nextButton = CustomButton(frame: CGRect.zero)
         backButton = CustomButton(frame: CGRect.zero)
         super.init(image: image, parent: parent, xSizeFactor: xSizeFactor)

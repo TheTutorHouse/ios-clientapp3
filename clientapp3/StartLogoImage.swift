@@ -23,7 +23,13 @@ class StartLogoImage: LogoImage{
         self.centerInParent(parent)
         
         //Reposition upwards from the logo label.
-        self.repositionFrom(logoLabel, by: -0.025, axis: .vertical, parent: parent, relative: true)
+        var amount: CGFloat{
+            switch Display.type{
+            case .iphone5: return -0.02
+            default: return -0.025
+            }
+        }
+        self.repositionFrom(logoLabel, by: amount, axis: .vertical, parent: parent, relative: true)
         parent.addSubview(self)
     }
     

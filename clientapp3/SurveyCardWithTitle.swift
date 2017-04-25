@@ -30,7 +30,7 @@ class SurveyCardWithTitle: SurveyCard{
         super.init(frame: frame)
     }
     
-    init(image: UIImage?, parent: UIView, xSizeFactor: CGFloat = 0.83, buttonTarget: Any, buttonAction: Selector, buttonTag: Int, titleText: String, titleMaxWidthFactor: CGFloat, titleVerticalOffset: CGFloat) {
+    init(image: UIImage?, parent: UIView, xSizeFactor: CGFloat = Card.defaultXSizeFactor, buttonTarget: Any, buttonAction: Selector, buttonTag: Int, titleText: String, titleMaxWidthFactor: CGFloat, titleVerticalOffset: CGFloat) {
         titleLabel = HeaderLabel(frame: CGRect.zero)
         titleUnderline = HorizontalLine()
         super.init(image: image, parent: parent, xSizeFactor: xSizeFactor, buttonTarget: buttonTarget, buttonAction: buttonAction, buttonTag: buttonTag)

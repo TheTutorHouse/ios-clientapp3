@@ -47,7 +47,8 @@ class IntroCard: Card{
         self.headerLabel = IntroCardHeaderLabel(frame: CGRect.zero)
         self.bodyLabel = IntroCardBodyLabel(frame: CGRect.zero)
         self.beginButton = IntroCardBeginButton(frame: CGRect.zero)
-        super.init(image: #imageLiteral(resourceName: "IntroCard-Medium"), parent: parent, xSizeFactor: 0.83)
+        
+        super.init(image: #imageLiteral(resourceName: "IntroCard-Medium"), parent: parent)
         
         initializeContents(buttonTarget: buttonTarget, buttonAction: buttonAction)
         parent.addSubview(self)
@@ -74,7 +75,13 @@ class IntroCard: Card{
     }
     
     func bounceIn(to anchorObject: UIView, parent: UIView, completionAction: (()->())?){
-        super.bounceIn(from: .bottom, to: anchorObject, spacingFactor: 0.03, parent: parent, completionAction: completionAction)
+        var spacingFactor: CGFloat{
+            switch Display.type{
+            case .iphone5: return 0.015
+            default: return 0.03
+            }
+        }
+        super.bounceIn(from: .bottom, to: anchorObject, spacingFactor: spacingFactor, parent: parent, completionAction: completionAction)
     }
     
     func bounceOut(parent: UIView) {

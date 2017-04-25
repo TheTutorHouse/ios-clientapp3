@@ -21,6 +21,7 @@ class SurveyCard2: SurveyCardWithTitle{
     
     init(parent: UIView, nextButtonTarget: Any, nextButtonAction: Selector) {
         super.init(image: #imageLiteral(resourceName: "SurveyCard2-Medium"), parent: parent, buttonTarget: nextButtonTarget, buttonAction: nextButtonAction, buttonTag: 2, titleText: "What kind of learner are you?", titleMaxWidthFactor: 0.78, titleVerticalOffset: -0.375)
+        titleLabel.textAlignment = .left
         nextButton.isEnabled = false
         self.initializeContents()
         parent.addSubview(self)
@@ -33,6 +34,7 @@ class SurveyCard2: SurveyCardWithTitle{
     }
     
     func initializeContents(){
+        titleLabel.translateOrigin(by: -0.39, axis: .horizontal, parent: self, relative: true)
         learnerButtons = [SurveyCard2LearnerButton]()
         learnerButtons.append(SurveyCard2LearnerButton.init(parent: self, learnerType: .visual, target: self, action: #selector(onLearnerButtonClick(_:))))
         learnerButtons.append(SurveyCard2LearnerButton.init(parent: self, learnerType: .auditory, target: self, action: #selector(onLearnerButtonClick(_:))))

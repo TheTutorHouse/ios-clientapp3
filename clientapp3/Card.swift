@@ -10,6 +10,13 @@ import UIKit
 
 class Card: UIImageView {
     
+    static var defaultXSizeFactor: CGFloat{
+            switch Display.type{
+            case .iphone5: return 0.925
+            default: return 0.83
+            }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -18,7 +25,7 @@ class Card: UIImageView {
         super.init(frame: frame)
     }
     
-    init(image: UIImage?, parent: UIView, xSizeFactor: CGFloat = 0.83){
+    init(image: UIImage?, parent: UIView, xSizeFactor: CGFloat = defaultXSizeFactor){
         super.init(image: image)
         self.center = parent.center
         self.resizeProportionally(on: .horizontal, by: xSizeFactor, parent: parent, relative: true)

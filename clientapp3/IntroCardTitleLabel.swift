@@ -20,7 +20,15 @@ class IntroCardTitleLabel: HeaderLabel{
     init(parent: UIView){
         super.init(text: "Welcome!", size: .regular, color: .grey)
         self.centerInParent(parent)
-        self.translate(by: -0.35, axis: .vertical, parent: parent, relative: true)
+        
+        var amount: CGFloat{
+            switch Display.type{
+            case .iphone5: return -0.385
+            default: return -0.35
+            }
+        }
+        
+        self.translate(by: amount, axis: .vertical, parent: parent, relative: true)
         parent.addSubview(self)
     }
 }

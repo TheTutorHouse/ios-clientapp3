@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3112555B1EAA83DE002B40FD /* ControllerWithKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3112555A1EAA83DE002B40FD /* ControllerWithKeyboard.swift */; };
+		3178694F1EAE78370074BE9B /* DisplayClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178694E1EAE78370074BE9B /* DisplayClassifier.swift */; };
 		31967F831EAE3C4100ABA35B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 31967F821EAE3C4100ABA35B /* Settings.bundle */; };
 		31A469551EACEC16006769F0 /* SurveyCard2LearnerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A469541EACEC16006769F0 /* SurveyCard2LearnerButton.swift */; };
 		31ABB3831EAA56E2009BEF9C /* SurveyCard2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ABB3821EAA56E2009BEF9C /* SurveyCard2.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		3112555A1EAA83DE002B40FD /* ControllerWithKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerWithKeyboard.swift; sourceTree = "<group>"; };
+		3178694E1EAE78370074BE9B /* DisplayClassifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayClassifier.swift; sourceTree = "<group>"; };
 		31967F821EAE3C4100ABA35B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		31A469541EACEC16006769F0 /* SurveyCard2LearnerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard2LearnerButton.swift; sourceTree = "<group>"; };
 		31ABB3821EAA56E2009BEF9C /* SurveyCard2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SurveyCard2.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				31C33B531EA3044700C3E5F4 /* AppDelegate.swift */,
 				31C33B761EA4F71E00C3E5F4 /* UIElements */,
 				31D748761EA5122B00924748 /* UIExtensions.swift */,
+				3178694E1EAE78370074BE9B /* DisplayClassifier.swift */,
 				31C33B571EA3044700C3E5F4 /* Main.storyboard */,
 				31967F821EAE3C4100ABA35B /* Settings.bundle */,
 				31C33B5A1EA3044700C3E5F4 /* Assets.xcassets */,
@@ -449,6 +452,7 @@
 				31C33B7C1EA4FD7E00C3E5F4 /* CustomLabel.swift in Sources */,
 				31D7487B1EA53BA400924748 /* CustomButton.swift in Sources */,
 				31C33B731EA4863D00C3E5F4 /* SurveyController.swift in Sources */,
+				3178694F1EAE78370074BE9B /* DisplayClassifier.swift in Sources */,
 				31B91A2B1EA9013C0042D8A1 /* StartLogoImage.swift in Sources */,
 				31B91A271EA8FF3F0042D8A1 /* LogoImage.swift in Sources */,
 				31B91A3F1EA92A9A0042D8A1 /* IntroCardHeaderLabel.swift in Sources */,
